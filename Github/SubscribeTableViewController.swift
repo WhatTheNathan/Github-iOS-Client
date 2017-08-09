@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import SwiftDate
 
 class SubscribeTableViewController: UITableViewController {
 
@@ -37,17 +38,46 @@ class SubscribeTableViewController: UITableViewController {
         Alamofire.request(ApiHelper.API_Root+"/users/" + "22Nathan" + "/received_events").responseJSON {response in
             switch response.result.isSuccess {
             case true:
+                print(response)
                 var subscribeEvents : [SubscribeModel] = []
                 if let value = response.result.value {
                     let json = JSON(value)
                     for event in json{
                         var eventString = event.1
-                        let subscribeEvent = SubscribeModel(eventString["actor"]["login"].string!,
-                                                            "",
-                                                            eventString["created_at"].string!,
-                                                            eventString["repo"]["name"].string!,
-                                                            eventString["actor"]["avatar_url"].string!,
-                                                            "")
+                        //parse userName
+                        let userName = eventString["actor"]["login"].string!
+                        
+                        //parse imageUrl
+                        let imageUrl = URL(string: eventString["actor"]["avatar_url"].string!)
+                        
+                        //parse repoName
+                        let repoName = eventString["repo"]["name"].string!
+                        
+                        //parse Date
+                        var createdDateString = eventString["created_at"].string!
+                        createdDateString.remove(at: createdDateString.index(before: createdDateString.endIndex))
+                        let fromIndex = createdDateString.index(createdDateString.startIndex,offsetBy: 10)
+                        let toIndex = createdDateString.index(createdDateString.startIndex,offsetBy: 11)
+                        let range = fromIndex..<toIndex
+                        createdDateString.replaceSubrange(range, with: " ")
+                        let createdDate = try! DateInRegion(string: createdDateString, format: .custom("yyyy-MM-dd HH:mm:ss"), fromRegion: Region.Local())
+                        
+                        //parse action
+                        var action : String = ""
+                        if eventString["payload"]["action"].exists(){
+                            action = "starred"
+                        }else{
+                            action = "forked"
+                        }
+                        
+                        let description = userName + " " + action + " " + repoName
+
+                        let subscribeEvent = SubscribeModel(userName,
+                                                            action,
+                                                            (createdDate?.absoluteDate)!,
+                                                            repoName,
+                                                            imageUrl!,
+                                                            description)
                         subscribeEvents.append(subscribeEvent)
                     }
                 }
@@ -60,12 +90,10 @@ class SubscribeTableViewController: UITableViewController {
     }
     
     private func completionHandler(){
-        print(subscribeMovements[0][0].userName)
         tableView.reloadData()
     }
     
     @IBAction func refreshCache(sender: UIRefreshControl) {
-        
     }
     
 
@@ -79,7 +107,6 @@ class SubscribeTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("dsfdsfrwfrrws")
         let cell = tableView.dequeueReusableCell(withIdentifier: "Subscribe", for: indexPath)
         let event: SubscribeModel = subscribeMovements[indexPath.section][indexPath.row]
         if let subscribeCell = cell as? SubscribeTableViewCell{
@@ -88,7 +115,6 @@ class SubscribeTableViewController: UITableViewController {
         return cell
     }
     
-
     /*
     // MARK: - Navigation
 

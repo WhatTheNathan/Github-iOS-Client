@@ -5,4 +5,5 @@ target 'Github' do
 	pod 'Alamofire','~> 4.4.0'
 	pod 'SwiftyJSON'
 	pod 'SVProgressHUD'
+	pod 'SwiftDate', '~> 4.0'
 end

@@ -33,7 +33,6 @@ class LoginViewController: UIViewController {
             switch response.result.isSuccess {
             case true:
                 //Mark: print
-                print(response)
                 let responseString = String(describing: response)
                 let fromIndex = responseString.index(responseString.startIndex,offsetBy: 22)
                 let toIndex = responseString.index(responseString.startIndex,offsetBy: 62)

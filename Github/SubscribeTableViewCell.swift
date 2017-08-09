@@ -23,18 +23,21 @@ class SubscribeTableViewCell: UITableViewCell {
     
     private func updateUI(){
         if let profileImageURL = subscribeMovement?.imageUrl {
-            if let url = URL(string: profileImageURL){
-                // FIXME: blocks main thread
-                if let imageData = try? Data(contentsOf: url) {
-                    UserProfileImgaeView?.image = UIImage(data: imageData)
+                DispatchQueue.global(qos: .userInitiated).async { [weak self] in //reference to image，self may be nil
+                    let urlContents = try? Data(contentsOf: profileImageURL)
+                    if let imageData = urlContents, profileImageURL == self?.subscribeMovement?.imageUrl{
+                        DispatchQueue.main.async {
+                            self?.UserProfileImgaeView.image = UIImage(data: imageData)
+                        }
+                    }
                 }
-            }
         } else {
             UserProfileImgaeView?.image = nil
         }
         
-        MovementLabel.text = subscribeMovement?.userName
-        CreatedTimeLabel.text = subscribeMovement?.created
+        MovementLabel.text = subscribeMovement?.description
+        
+        CreatedTimeLabel.text = subscribeMovement?.created.string()
     }
     
     override func awakeFromNib() {
