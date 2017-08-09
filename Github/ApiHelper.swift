@@ -19,4 +19,6 @@ class ApiHelper
     
     static var code : String = ""
     static var access_token : String = ""
+    
+    static var currentUserName: String = ""
 }

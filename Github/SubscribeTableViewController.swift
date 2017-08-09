@@ -7,36 +7,84 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class SubscribeTableViewController: UITableViewController {
 
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.navigationController?.navigationBar.backgroundColor = UIColor.black
+        loadCache(completionHandler: completionHandler)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    //Mark: - Model
+    var subscribeMovements : [[SubscribeModel]] = []
+    
+    //Mark: -Logic
+    private func loadCache(completionHandler: @escaping () -> ()){
+        Alamofire.request(ApiHelper.API_Root+"/users/" + "22Nathan" + "/received_events").responseJSON {response in
+            switch response.result.isSuccess {
+            case true:
+                var subscribeEvents : [SubscribeModel] = []
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    for event in json{
+                        var eventString = event.1
+                        let subscribeEvent = SubscribeModel(eventString["actor"]["login"].string!,
+                                                            "",
+                                                            eventString["created_at"].string!,
+                                                            eventString["repo"]["name"].string!,
+                                                            eventString["actor"]["avatar_url"].string!,
+                                                            "")
+                        subscribeEvents.append(subscribeEvent)
+                    }
+                }
+                self.subscribeMovements.append(subscribeEvents)
+                completionHandler()
+            case false:
+                print(response.result.error!)
+            }
+        }
+    }
+    
+    private func completionHandler(){
+        print(subscribeMovements[0][0].userName)
+        tableView.reloadData()
+    }
+    
+    @IBAction func refreshCache(sender: UIRefreshControl) {
+        
+    }
+    
 
     // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return subscribeMovements.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return subscribeMovements[section].count
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        print("dsfdsfrwfrrws")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Subscribe", for: indexPath)
+        let event: SubscribeModel = subscribeMovements[indexPath.section][indexPath.row]
+        if let subscribeCell = cell as? SubscribeTableViewCell{
+            subscribeCell.subscribeMovement = event
+        }
         return cell
     }
     
@@ -50,5 +98,4 @@ class SubscribeTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }

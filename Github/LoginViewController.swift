@@ -15,6 +15,7 @@ class LoginViewController: UIViewController {
     
     var user = UserModel("","","")
     
+    //Mark: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -26,6 +27,7 @@ class LoginViewController: UIViewController {
         }
     }
     
+    //Mark: - network request
     private func requestAccess_Token(){
         Alamofire.request(ApiHelper.getAccess_TokenUrl+ApiHelper.code).responseString{response in
             switch response.result.isSuccess {
@@ -62,9 +64,12 @@ class LoginViewController: UIViewController {
     }
     
     private func completionHandler(){
+        ApiHelper.currentUserName = user.userName
 //        performSegue(withIdentifier: "login", sender: LoginViewController.self)
     }
 
+    
+    
     // MARK: - Segue
 //    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
 //        return true
