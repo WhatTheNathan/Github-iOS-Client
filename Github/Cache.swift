@@ -18,7 +18,7 @@ class Cache{
     static func subscribeRequest(completionHandler: @escaping ()->()) {
         //Mark: - print
         print("subscribeRequest")
-        Alamofire.request(ApiHelper.API_Root+"/users/" + "22Nathan" + "/received_events").responseJSON {response in
+        Alamofire.request(ApiHelper.API_Root+"/users/" + ApiHelper.currentUser.userName + "/received_events").responseJSON {response in
             switch response.result.isSuccess{
             case true:
                 if let value = response.result.value {

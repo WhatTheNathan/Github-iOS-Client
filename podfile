@@ -6,4 +6,5 @@ target 'Github' do
 	pod 'SwiftyJSON'
 	pod 'SVProgressHUD'
 	pod 'SwiftDate', '~> 4.0'
+	pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
 end

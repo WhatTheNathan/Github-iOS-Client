@@ -70,9 +70,9 @@ class WebViewController: UIViewController,UIWebViewDelegate {
 //                if let loginMVC = presentingViewController as? LoginViewController{
 //                    loginMVC.code = code
 //                }
-//                presentingViewController?.dismiss(animated: true)
+                presentingViewController?.dismiss(animated: true)
                 ApiHelper.code = code
-                self.navigationController?.popViewController(animated: true)
+//                self.navigationController?.popViewController(animated: true)
             }
         }
         return true

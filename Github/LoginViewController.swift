@@ -23,7 +23,12 @@ class LoginViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
+        if(Cache.get("currentUser") != " "){
+            print("here")
+            performSegue(withIdentifier: "login", sender: LoginViewController.self)
+        }
         if ApiHelper.code != ""{
+            showProgressDialog()
             requestAccess_Token()
         }
     }
@@ -65,7 +70,8 @@ class LoginViewController: UIViewController {
     
     private func completionHandler(){        
         ApiHelper.currentUser = user
-//        performSegue(withIdentifier: "login", sender: LoginViewController.self)
+        hideProgressDialog()
+        performSegue(withIdentifier: "login", sender: LoginViewController.self)
     }
 
     

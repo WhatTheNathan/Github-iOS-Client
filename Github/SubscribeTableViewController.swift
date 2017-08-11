@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import SwiftDate
+import ChameleonFramework
 
 class SubscribeTableViewController: UITableViewController{
 
@@ -20,7 +21,7 @@ class SubscribeTableViewController: UITableViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        self.navigationController?.navigationBar.backgroundColor = UIColor.black
+        self.navigationController?.navigationBar.backgroundColor = UIColor.flatBlack
         loadCache()
     }
 
@@ -42,6 +43,8 @@ class SubscribeTableViewController: UITableViewController{
         }
         
         var subscribeEvents : [SubscribeModel] = []
+        subscribeMovements.removeAll()
+        
         let value = Cache.get(Cache.subscribeCacheKey)
         let json = JSON.parse(value)
         for event in json{
