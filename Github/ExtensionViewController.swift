@@ -21,7 +21,7 @@ extension UIViewController{
         }
     }
     
-    //显示加载框
+    /// 显示加载框（全局单例）
     static func showProgressDialog() {
         SVProgressHUD.setDefaultStyle(.custom)
         SVProgressHUD.setBackgroundColor(UIColor(red: 0, green: 0, blue: 0, alpha: 0.8))
@@ -30,9 +30,17 @@ extension UIViewController{
         progressDialogShown = true
     }
     
+    func showProgressDialog() {
+        UIViewController.showProgressDialog()
+    }
+    
     /// 隐藏加载框（全局单例）
     static func hideProgressDialog() {
         SVProgressHUD.dismiss()
         progressDialogShown = false
+    }
+    
+    func hideProgressDialog() {
+        UIViewController.hideProgressDialog()
     }
 }

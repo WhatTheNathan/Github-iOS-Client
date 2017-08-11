@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 import SwiftDate
 
-class SubscribeTableViewController: UITableViewController {
+class SubscribeTableViewController: UITableViewController{
 
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -21,7 +21,7 @@ class SubscribeTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.navigationController?.navigationBar.backgroundColor = UIColor.black
-        loadCache(completionHandler: completionHandler)
+        loadCache()
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,73 +29,76 @@ class SubscribeTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
     //Mark: - Model
     var subscribeMovements : [[SubscribeModel]] = []
     
     //Mark: -Logic
-    private func loadCache(completionHandler: @escaping () -> ()){
-        Alamofire.request(ApiHelper.API_Root+"/users/" + "22Nathan" + "/received_events").responseJSON {response in
-            switch response.result.isSuccess {
-            case true:
-                print(response)
-                var subscribeEvents : [SubscribeModel] = []
-                if let value = response.result.value {
-                    let json = JSON(value)
-                    for event in json{
-                        var eventString = event.1
-                        //parse userName
-                        let userName = eventString["actor"]["login"].string!
-                        
-                        //parse imageUrl
-                        let imageUrl = URL(string: eventString["actor"]["avatar_url"].string!)
-                        
-                        //parse repoName
-                        let repoName = eventString["repo"]["name"].string!
-                        
-                        //parse Date
-                        var createdDateString = eventString["created_at"].string!
-                        createdDateString.remove(at: createdDateString.index(before: createdDateString.endIndex))
-                        let fromIndex = createdDateString.index(createdDateString.startIndex,offsetBy: 10)
-                        let toIndex = createdDateString.index(createdDateString.startIndex,offsetBy: 11)
-                        let range = fromIndex..<toIndex
-                        createdDateString.replaceSubrange(range, with: " ")
-                        let createdDate = try! DateInRegion(string: createdDateString, format: .custom("yyyy-MM-dd HH:mm:ss"), fromRegion: Region.Local())
-                        
-                        //parse action
-                        var action : String = ""
-                        if eventString["payload"]["action"].exists(){
-                            action = "starred"
-                        }else{
-                            action = "forked"
-                        }
-                        
-                        let description = userName + " " + action + " " + repoName
-
-                        let subscribeEvent = SubscribeModel(userName,
-                                                            action,
-                                                            (createdDate?.absoluteDate)!,
-                                                            repoName,
-                                                            imageUrl!,
-                                                            description)
-                        subscribeEvents.append(subscribeEvent)
-                    }
-                }
-                self.subscribeMovements.append(subscribeEvents)
-                completionHandler()
-            case false:
-                print(response.result.error!)
-            }
+    func loadCache(){
+//        print(Cache.get("subscribe"))
+        // If Empty
+        if(Cache.get(Cache.subscribeCacheKey) == " "){
+            refreshCache()
+            return
         }
-    }
-    
-    private func completionHandler(){
+        
+        var subscribeEvents : [SubscribeModel] = []
+        let value = Cache.get(Cache.subscribeCacheKey)
+        let json = JSON.parse(value)
+        for event in json{
+            var eventString = event.1
+            //parse userName
+            let userName = eventString["actor"]["login"].string!
+            
+            //parse imageUrl
+            let imageUrl = URL(string: eventString["actor"]["avatar_url"].string!)
+                        
+            //parse repoName
+            let repoName = eventString["repo"]["name"].string!
+                        
+            //parse Date
+            var createdDateString = eventString["created_at"].string!
+            createdDateString.remove(at: createdDateString.index(before: createdDateString.endIndex))
+            let fromIndex = createdDateString.index(createdDateString.startIndex,offsetBy: 10)
+            let toIndex = createdDateString.index(createdDateString.startIndex,offsetBy: 11)
+            let range = fromIndex..<toIndex
+            createdDateString.replaceSubrange(range, with: " ")
+            let createdDate = try! DateInRegion(string: createdDateString, format: .custom("yyyy-MM-dd HH:mm:ss"), fromRegion: Region.Local())
+                        
+            //parse action
+            var action : String = ""
+            if eventString["payload"]["action"].exists(){
+                action = "starred"
+            }else{
+                action = "forked"
+            }
+            
+            //parse ID
+            let eventID = eventString["id"].stringValue
+            
+            //make description
+            let description = userName + " " + action + " " + repoName
+
+            let subscribeEvent = SubscribeModel(userName,
+                                                action,
+                                                (createdDate?.absoluteDate)!,
+                                                repoName,
+                                                imageUrl!,
+                                                description,
+                                                eventID)
+            subscribeEvents.append(subscribeEvent)
+            }
+        subscribeMovements.append(subscribeEvents)
+        hideProgressDialog()
         tableView.reloadData()
     }
     
-    @IBAction func refreshCache(sender: UIRefreshControl) {
+    @IBAction func refreshCache() {
+        showProgressDialog()
+        //Fix: create closure to make request
+        Cache.subscribeRequest {
+            self.loadCache()
+        }
     }
-    
 
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {

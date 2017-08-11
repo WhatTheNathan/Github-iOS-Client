@@ -17,8 +17,19 @@ class ApiHelper
     static let getCodeUrl : String = "https://github.com/login/oauth/authorize?client_id=" + client_id + "&scope=user,public_repo"
     static let getAccess_TokenUrl : String = "https://github.com/login/oauth/access_token?client_id=" + client_id + "&client_secret=" + cilent_secret + "&code="
     
+    //User
     static var code : String = ""
     static var access_token : String = ""
+    static var currentUser: UserModel{
+        get{
+            return UserModel(SwiftyJSON.JSON.parse(Cache.get("currentUser")))
+        }
+        set{
+            Cache.set("currentUser", newValue.toSwiftyJSON().rawString()!)
+        }
+    }
     
-    static var currentUserName: String = ""
+    
+    //UI
+    
 }

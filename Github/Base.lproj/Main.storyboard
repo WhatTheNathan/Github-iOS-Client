@@ -116,6 +116,7 @@
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="ht2-if-drc">
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
+                            <action selector="refreshCache" destination="Hio-85-Hy4" eventType="valueChanged" id="E7B-o5-4vC"/>
                             <action selector="refreshCacheWithSender:" destination="Hio-85-Hy4" eventType="valueChanged" id="dxm-N3-zgA"/>
                         </connections>
                     </refreshControl>

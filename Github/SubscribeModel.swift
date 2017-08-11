@@ -15,13 +15,21 @@ class SubscribeModel{
     var repoName: String
     var imageUrl : URL
     var description: String
+    var eventID : String
     
-    init(_ userName:String, _ action: String, _ created: Date, _ repoName: String, _ imageUrl:URL, _ description:String) {
+    init(_ userName:String,
+         _ action: String,
+         _ created: Date,
+         _ repoName: String,
+         _ imageUrl:URL,
+         _ description:String,
+         _ eventID: String) {
         self.userName = userName
         self.action = action
         self.created = created
         self.repoName = repoName
         self.imageUrl = imageUrl
         self.description = description
+        self.eventID = eventID
     }
 }

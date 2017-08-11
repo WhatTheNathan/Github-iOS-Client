@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Haneke
 
 class SubscribeTableViewCell: UITableViewCell {
 
@@ -22,22 +23,29 @@ class SubscribeTableViewCell: UITableViewCell {
     }
     
     private func updateUI(){
-        if let profileImageURL = subscribeMovement?.imageUrl {
+        let imageKey = "eventImage"+(subscribeMovement?.eventID)!
+        if let imageData = Cache.mainCache.data(forKey: imageKey){
+            UserProfileImgaeView.image = UIImage(data: imageData)
+        }else{
+            if let profileImageURL = subscribeMovement?.imageUrl {
                 DispatchQueue.global(qos: .userInitiated).async { [weak self] in //reference to image，self may be nil
                     let urlContents = try? Data(contentsOf: profileImageURL)
+                    Cache.set(imageKey, urlContents)
                     if let imageData = urlContents, profileImageURL == self?.subscribeMovement?.imageUrl{
                         DispatchQueue.main.async {
                             self?.UserProfileImgaeView.image = UIImage(data: imageData)
                         }
                     }
                 }
-        } else {
-            UserProfileImgaeView?.image = nil
+            } else {
+                UserProfileImgaeView?.image = nil
+            }
         }
         
         MovementLabel.text = subscribeMovement?.description
         
         CreatedTimeLabel.text = subscribeMovement?.created.string()
+        
     }
     
     override func awakeFromNib() {

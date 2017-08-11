@@ -9,6 +9,8 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import Haneke
+
 
 class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
@@ -51,7 +53,7 @@ class LoginViewController: UIViewController {
             switch response.result.isSuccess {
             case true:
                 if let value = response.result.value {
-                    let json = JSON(value)
+                    let json = SwiftyJSON.JSON(value)
                     self.user.userName = json["login"].stringValue
                     self.user.email = json["email"].stringValue
                 }
@@ -62,8 +64,8 @@ class LoginViewController: UIViewController {
         }
     }
     
-    private func completionHandler(){
-        ApiHelper.currentUserName = user.userName
+    private func completionHandler(){        
+        ApiHelper.currentUser = user
 //        performSegue(withIdentifier: "login", sender: LoginViewController.self)
     }
 
