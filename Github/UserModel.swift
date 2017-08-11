@@ -8,9 +8,6 @@
 
 import Foundation
 import SwiftyJSON
-import Haneke
-
-typealias SJSON = SwiftyJSON.JSON
 
 class UserModel{
     var userName : String
@@ -23,25 +20,17 @@ class UserModel{
         self.password = password
     }
     
-    convenience init(_ json : SJSON){
+    convenience init(_ json : JSON){
         self.init(json["userName"].stringValue,
                   json["email"].stringValue,
                   json["password"].stringValue)
     }
     
-    func toSwiftyJSON() -> SJSON {
-        return SJSON([
+    func toJSON() -> JSON {
+        return JSON([
             "userName" : userName,
             "email" : email,
             "password" : password,
             ])
     }
-    
-//    func toHanekeJSON() -> Haneke.JSON{
-//        var userDictionary = [String : String]()
-//        userDictionary["userName"] = userName
-//        let hanekeJSON : Haneke.JSON
-//        hanekeJSON.dictionary = userDictionary
-//        return hanekeJSON
-//    }
 }

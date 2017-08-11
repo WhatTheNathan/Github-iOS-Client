@@ -25,7 +25,7 @@ class ApiHelper
             return UserModel(SwiftyJSON.JSON.parse(Cache.get("currentUser")))
         }
         set{
-            Cache.set("currentUser", newValue.toSwiftyJSON().rawString()!)
+            Cache.set("currentUser", newValue.toJSON().rawString()!)
         }
     }
     

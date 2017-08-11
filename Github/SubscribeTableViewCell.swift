@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Haneke
 
 class SubscribeTableViewCell: UITableViewCell {
 
