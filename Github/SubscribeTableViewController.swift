@@ -108,6 +108,7 @@ class SubscribeTableViewController: UITableViewController{
         return subscribeMovements.count
     }
 
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return subscribeMovements[section].count
     }

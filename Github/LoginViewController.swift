@@ -24,7 +24,6 @@ class LoginViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         if(Cache.get("currentUser") != " "){
-            print("here")
             performSegue(withIdentifier: "login", sender: LoginViewController.self)
         }
         if ApiHelper.code != ""{

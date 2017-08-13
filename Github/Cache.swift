@@ -32,6 +32,26 @@ class Cache{
         }
     }
     
+    //Mark: -userProfile
+    static let profileCacheKey = "selfProfile"
+    static func profileRequest(completionHandler: @escaping ()->()){
+        //Mark: - print
+        print("profileRequest")
+        Alamofire.request(ApiHelper.API_Root+"/users/" + ApiHelper.currentUser.userName).responseJSON{ response in
+            switch response.result.isSuccess{
+            case true:
+//                print(response)
+                if let value = response.result.value {
+                    let json = SwiftyJSON.JSON(value)
+                    Cache.set(Cache.profileCacheKey, json.rawString()!)
+                }
+                completionHandler()
+            case false:
+                print(response.result.error!)
+            }
+        }
+    }
+    
     static func get(_ key : String) -> String {
         if let value = Cache.mainCache.string(forKey: key){
             return value

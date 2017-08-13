@@ -9,17 +9,11 @@
 import UIKit
 
 class SubscribeTableViewCell: UITableViewCell {
-
-    
     @IBOutlet weak var UserProfileImgaeView: UIImageView!
     @IBOutlet weak var MovementLabel: UILabel!
     @IBOutlet weak var CreatedTimeLabel: UILabel!
     
-    var subscribeMovement : SubscribeModel?{
-        didSet{
-            updateUI()
-        }
-    }
+    var subscribeMovement : SubscribeModel?{ didSet{ updateUI() } }
     
     private func updateUI(){
         let imageKey = "eventImage"+(subscribeMovement?.eventID)!
@@ -46,16 +40,4 @@ class SubscribeTableViewCell: UITableViewCell {
         CreatedTimeLabel.text = subscribeMovement?.created.string()
         
     }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }

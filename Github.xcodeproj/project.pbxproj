@@ -27,6 +27,10 @@
 		53E6D9731F3B301500681B1B /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E6D9721F3B301500681B1B /* Cache.swift */; };
 		53E6D9791F3DFD6900681B1B /* PersonalTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E6D9781F3DFD6900681B1B /* PersonalTableViewController.swift */; };
 		53E6D97B1F3E0E5500681B1B /* LauchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E6D97A1F3E0E5500681B1B /* LauchScreenViewController.swift */; };
+		53E6D9811F3E23E800681B1B /* TitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E6D9801F3E23E800681B1B /* TitleTableViewCell.swift */; };
+		53E6D9831F3E2CF900681B1B /* TitleModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E6D9821F3E2CF900681B1B /* TitleModule.swift */; };
+		53E6D9851F3E2D4800681B1B /* InfoModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E6D9841F3E2D4800681B1B /* InfoModule.swift */; };
+		53E6D9891F3EB89800681B1B /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E6D9881F3EB89800681B1B /* InfoTableViewCell.swift */; };
 		B62FE55D66888A2CB7451156 /* Pods_Github.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7406373AB38974B301D80E0 /* Pods_Github.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +57,10 @@
 		53E6D9721F3B301500681B1B /* Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		53E6D9781F3DFD6900681B1B /* PersonalTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalTableViewController.swift; sourceTree = "<group>"; };
 		53E6D97A1F3E0E5500681B1B /* LauchScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LauchScreenViewController.swift; sourceTree = "<group>"; };
+		53E6D9801F3E23E800681B1B /* TitleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleTableViewCell.swift; sourceTree = "<group>"; };
+		53E6D9821F3E2CF900681B1B /* TitleModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleModule.swift; sourceTree = "<group>"; };
+		53E6D9841F3E2D4800681B1B /* InfoModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoModule.swift; sourceTree = "<group>"; };
+		53E6D9881F3EB89800681B1B /* InfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
 		A7406373AB38974B301D80E0 /* Pods_Github.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Github.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC1ABA79051BE9CA3963D1E8 /* Pods-Github.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Github.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Github/Pods-Github.debug.xcconfig"; sourceTree = "<group>"; };
 		E092BDCDE4435BF026C7CD7C /* Pods-Github.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Github.release.xcconfig"; path = "Pods/Target Support Files/Pods-Github/Pods-Github.release.xcconfig"; sourceTree = "<group>"; };
@@ -174,6 +182,10 @@
 			children = (
 				53BAEDA21F34C2CC0059175B /* LoginModule */,
 				53E6D9781F3DFD6900681B1B /* PersonalTableViewController.swift */,
+				53E6D9801F3E23E800681B1B /* TitleTableViewCell.swift */,
+				53E6D9881F3EB89800681B1B /* InfoTableViewCell.swift */,
+				53E6D9821F3E2CF900681B1B /* TitleModule.swift */,
+				53E6D9841F3E2D4800681B1B /* InfoModule.swift */,
 			);
 			name = PersonalModule;
 			sourceTree = "<group>";
@@ -442,11 +454,15 @@
 				53E6D9641F3A1A7400681B1B /* SubscribeModel.swift in Sources */,
 				53E6D9561F39EA4700681B1B /* MainTarBarController.swift in Sources */,
 				53BAEDBF1F3572920059175B /* ExtensionViewController.swift in Sources */,
+				53E6D9891F3EB89800681B1B /* InfoTableViewCell.swift in Sources */,
 				53BAEDB91F3561900059175B /* SubscribeTableViewController.swift in Sources */,
 				53BAEDC21F36CFA20059175B /* WebViewController.swift in Sources */,
 				53E6D9621F3A192900681B1B /* SubscribeTableViewCell.swift in Sources */,
+				53E6D9811F3E23E800681B1B /* TitleTableViewCell.swift in Sources */,
 				53BAEDA61F34C8650059175B /* UserModel.swift in Sources */,
+				53E6D9831F3E2CF900681B1B /* TitleModule.swift in Sources */,
 				53E6D97B1F3E0E5500681B1B /* LauchScreenViewController.swift in Sources */,
+				53E6D9851F3E2D4800681B1B /* InfoModule.swift in Sources */,
 				53E6D9731F3B301500681B1B /* Cache.swift in Sources */,
 				53BAED891F338AB00059175B /* AppDelegate.swift in Sources */,
 			);
