@@ -80,7 +80,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="77"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="R7Y-pR-6ZE" id="BRL-tf-UhT">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="77"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="76.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CiK-yY-tH3">
@@ -131,12 +131,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Subscribe" id="wZv-Cg-0bR"/>
-                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="ht2-if-drc">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="cNe-Yi-sWZ">
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
-                            <action selector="refreshCache" destination="Hio-85-Hy4" eventType="valueChanged" id="E7B-o5-4vC"/>
-                            <action selector="refreshCacheWithSender:" destination="Hio-85-Hy4" eventType="valueChanged" id="dxm-N3-zgA"/>
+                            <action selector="refreshCache" destination="Hio-85-Hy4" eventType="valueChanged" id="pLL-6Q-91l"/>
                         </connections>
                     </refreshControl>
                 </tableViewController>
@@ -198,7 +196,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="278"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dxZ-kJ-pIs" id="hh3-gY-q59">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="278"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="277.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VAy-MJ-pSz">

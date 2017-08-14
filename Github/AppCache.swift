@@ -9,8 +9,11 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import Moya
 
 class AppCache{
+    static let myCache = UserDefaults.standard
+    
     let key : String
     var value : String{
         set{
@@ -21,29 +24,45 @@ class AppCache{
         }
     }
     
-    static let myCache = UserDefaults.standard
+    var provider : MoyaProvider<ApiConfig>{
+        return providerCreator()
+    }
     
-    init(_ key : String) {
+    let providerCreator : ()->MoyaProvider<ApiConfig>
+    
+    init(_ key : String , provider : @escaping () -> MoyaProvider<ApiConfig>) {
         self.key = key
+        self.providerCreator = provider
     }
     
     var isEmpty : Bool{
         return value == ""
     }
     
-    func dataRequest(_ api : String , completionHandler: @escaping ()->()) {
-        print("here2")
-        Alamofire.request(api).responseJSON {response in
-            switch response.result.isSuccess{
-            case true:
-                if let value = response.result.value {
-                    let json = JSON(value)
-                    self.set(self.key, json.rawString()!)
-                }
-                print("here3")
+    func subscribeRequest(_ userName : String , _ event : String , completionHandler: @escaping ()->()) {
+        provider.request(.userEvent(name: userName , event: event)) {result in
+            switch result {
+            case let .success(moyaResponse):
+                let data = moyaResponse.data
+                let json = JSON(data)
+                self.set(self.key, json.rawString()!)
                 completionHandler()
-            case false:
-                print(response.result.error!)
+            case let .failure(error):
+                print(error)
+            }
+        }
+    }
+    
+    func profileRequest(_ userName : String , completionHandler: @escaping ()->()) {
+        provider.request(.userInfo(name: userName)) {result in
+            switch result {
+            case let .success(moyaResponse):
+                let data = moyaResponse.data
+                let json = JSON(data)
+                self.set(self.key, json.rawString()!)
+                completionHandler()
+            case let .failure(error):
+                print(error)
             }
         }
     }
@@ -55,7 +74,7 @@ class AppCache{
         return ""
     }
     
-    private func set(_ key : String, _ value : String) {
+    func set(_ key : String, _ value : String) {
         AppCache.myCache.set(value, forKey: key)
     }
 }

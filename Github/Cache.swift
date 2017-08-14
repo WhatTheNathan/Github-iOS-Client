@@ -9,26 +9,40 @@
 import Foundation
 import SwiftyJSON
 import Alamofire
+import Moya
 
 class Cache{
+//    private func providerCreator() -> MoyaProvider<ApiConfig> {
+//        let provider = MoyaProvider<ApiConfig>()
+//        return provider
+//    }
+    
     //Mark: - image
     static let imageCache = UserDefaults.standard
-    
-    //Mark: - subscribe
-    static let subscribeCacheKey = "subscribe"
-    static let subscribeCache = AppCache(subscribeCacheKey)
-    
-    //Mark: - userProfile
-    static let profileCacheKey = "selfProfile"
-    static let profileCache = AppCache(profileCacheKey)
-    
-    //Mark: - currentUser
-    static let currentUserKey = "currentUser"
-    static let currentUserCache = AppCache(currentUserKey)
     
     static func set(_ key : String, _ value : Any?){
         Cache.imageCache.set(value, forKey: key)
     }
-
     
+    //Mark: - subscribe
+    static let subscribeCacheKey = "subscribe"
+    static let subscribeCache = AppCache(subscribeCacheKey){
+        let provider = MoyaProvider<ApiConfig>()
+        return provider
+    }
+    
+    //Mark: - userProfile
+    static let profileCacheKey = "selfProfile"
+    static let profileCache = AppCache(profileCacheKey) {
+        var provider = MoyaProvider<ApiConfig>()
+        return provider
+    }
+
+
+    //Mark: - currentUser
+    static let currentUserKey = "currentUser"
+    static let currentUserCache = AppCache(currentUserKey){
+        var provider = MoyaProvider<ApiConfig>()
+        return provider
+    }
 }

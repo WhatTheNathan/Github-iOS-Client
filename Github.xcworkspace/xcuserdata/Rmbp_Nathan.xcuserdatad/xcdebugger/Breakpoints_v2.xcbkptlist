@@ -74,13 +74,125 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Github/PersonalTableViewController.swift"
-            timestampString = "524289421.831944"
+            timestampString = "524388144.605204"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "120"
-            endingLineNumber = "120"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Github/SubscribeTableViewController.swift"
+            timestampString = "524398853.099755"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
+            landmarkName = "refreshCache()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Github.SubscribeTableViewController.refreshCache () -&gt; ()"
+                  moduleName = "Github"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Rmbp_Nathan/Documents/Github/Github-iOS-Client/Github/SubscribeTableViewController.swift"
+                  timestampString = "524398863.453079"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "103"
+                  endingLineNumber = "103"
+                  offsetFromSymbolStart = "198">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Github.SubscribeTableViewController.(refreshCache () -&gt; ()).(closure #1)"
+                  moduleName = "Github"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Rmbp_Nathan/Documents/Github/Github-iOS-Client/Github/SubscribeTableViewController.swift"
+                  timestampString = "524398863.455564"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "104"
+                  endingLineNumber = "104"
+                  offsetFromSymbolStart = "19">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Github/AppCache.swift"
+            timestampString = "524402301.054836"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "subscribeRequest(_:_:completionHandler:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Github.AppCache.subscribeRequest (Swift.String, Swift.String, completionHandler : () -&gt; ()) -&gt; ()"
+                  moduleName = "Github"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Rmbp_Nathan/Documents/Github/Github-iOS-Client/Github/AppCache.swift"
+                  timestampString = "524398950.657401"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "62">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Github.AppCache.(subscribeRequest (Swift.String, Swift.String, completionHandler : () -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "Github"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Rmbp_Nathan/Documents/Github/Github-iOS-Client/Github/AppCache.swift"
+                  timestampString = "524398950.65932"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "76">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Github/Cache.swift"
+            timestampString = "524402301.054836"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "subscribeCache"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

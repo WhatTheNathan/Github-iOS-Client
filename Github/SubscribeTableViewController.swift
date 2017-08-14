@@ -22,6 +22,7 @@ class SubscribeTableViewController: UITableViewController{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.navigationController?.navigationBar.backgroundColor = UIColor.flatBlack
+//        Cache.subscribeCache.set(Cache.subscribeCacheKey, "")
         loadCache()
     }
 
@@ -98,9 +99,9 @@ class SubscribeTableViewController: UITableViewController{
     @IBAction func refreshCache() {
         showProgressDialog()
         //Fix: create closure to make request
-        print("here1")
-        Cache.subscribeCache.dataRequest(ApiHelper.API_Root+"/users/" + ApiHelper.currentUser.userName + "/received_events") { 
+        Cache.subscribeCache.subscribeRequest(ApiHelper.currentUser.userName, "received_events") {
             self.loadCache()
+            self.refreshControl?.endRefreshing()
         }
     }
 

@@ -11,17 +11,20 @@ import SwiftyJSON
 
 class TitleModule{
     var userName : String
+    var userID : String
     var imageUrl: String
     var followers : String
     var repos : String
     var followings : String
     
     init(_ userName : String,
+         _ userID : String,
          _ imageUrl : String,
          _ followers : String,
          _ repos : String,
          _ followings : String) {
         self.userName = userName
+        self.userID = userID
         self.imageUrl = imageUrl
         self.followers = followers
         self.repos = repos
@@ -30,6 +33,7 @@ class TitleModule{
     
     convenience init(_ json : JSON){
         self.init(json["userName"].stringValue,
+                  json["userID"].stringValue,
                   json["imageUrl"].stringValue,
                   json["followers"].stringValue,
                   json["repos"].stringValue,

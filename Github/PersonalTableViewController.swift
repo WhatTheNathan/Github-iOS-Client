@@ -17,7 +17,7 @@ class PersonalTableViewController: UITableViewController {
     }
     
     var profiles : [[personalItem]] = []
-    var profileUrl : String = ApiHelper.API_Root+"/users/" + ApiHelper.currentUser.userName
+    var profileUserName : String = ApiHelper.currentUser.userName
     
     // MARK: - VC lifecycle
     override func viewDidLoad() {
@@ -26,6 +26,7 @@ class PersonalTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.navigationController?.navigationBar.backgroundColor = UIColor.flatBlack
+//        Cache.profileCache.set(Cache.profileCacheKey, "")
         loadCache()
     }
     
@@ -48,11 +49,12 @@ class PersonalTableViewController: UITableViewController {
         
         //parse titleModule
         let userName = json["login"].stringValue
+        let userID = json["id"].stringValue
         let imageUrl = json["avatar_url"].stringValue
         let followers = json["followers"].stringValue
         let repos = json["public_repos"].stringValue
         let followings = json["following"].stringValue
-        let titlePass = personalItem.Title( TitleModule(userName,imageUrl,followers,repos,followings) )
+        let titlePass = personalItem.Title( TitleModule(userName,userID,imageUrl,followers,repos,followings) )
         titleProfile.append(titlePass)
         profiles.append(titleProfile)
         
@@ -75,7 +77,7 @@ class PersonalTableViewController: UITableViewController {
 
     private func refreshCache() {
         showProgressDialog()
-        Cache.profileCache.dataRequest(profileUrl) { 
+        Cache.profileCache.profileRequest(profileUserName) {
             self.loadCache()
         }
     }

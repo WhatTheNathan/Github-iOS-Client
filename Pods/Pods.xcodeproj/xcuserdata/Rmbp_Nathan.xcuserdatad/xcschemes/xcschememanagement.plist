@@ -14,7 +14,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Moya.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Github.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Result.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -37,17 +47,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>465152DE449F9A633C905361149896C2</key>
+		<key>1215771836B84E9F9899950098D2FF80</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5739D8A9899D24F45288A73841352DB9</key>
+		<key>52ACA0236F086E72B74F0A090A743D41</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6703B1EF1CCBECB64565FA457575EC25</key>
+		<key>715B5699EAF76910206AE757236FFAE4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -62,7 +72,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F5DFF97C6D0FFAFAD9223C4048FF683D</key>
+		<key>A9810068DD3297F2053FF85298AA5CE0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C0F46459254747667A6E292D26B107C8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CEA55FEB08733608F06F67488DBDF6CE</key>
 		<dict>
 			<key>primary</key>
 			<true/>

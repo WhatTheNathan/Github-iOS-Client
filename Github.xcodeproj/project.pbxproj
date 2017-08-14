@@ -32,7 +32,8 @@
 		53E6D9851F3E2D4800681B1B /* InfoModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E6D9841F3E2D4800681B1B /* InfoModule.swift */; };
 		53E6D9891F3EB89800681B1B /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E6D9881F3EB89800681B1B /* InfoTableViewCell.swift */; };
 		53E6D98B1F4086B600681B1B /* AppCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E6D98A1F4086B600681B1B /* AppCache.swift */; };
-		53E6D98F1F409D1700681B1B /* ApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E6D98E1F409D1700681B1B /* ApiRequest.swift */; };
+		53E6D9911F416B9B00681B1B /* StringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E6D9901F416B9B00681B1B /* StringHelper.swift */; };
+		53E6D9931F418B0500681B1B /* ApiConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E6D9921F418B0500681B1B /* ApiConfig.swift */; };
 		B62FE55D66888A2CB7451156 /* Pods_Github.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7406373AB38974B301D80E0 /* Pods_Github.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,7 +65,8 @@
 		53E6D9841F3E2D4800681B1B /* InfoModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoModule.swift; sourceTree = "<group>"; };
 		53E6D9881F3EB89800681B1B /* InfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
 		53E6D98A1F4086B600681B1B /* AppCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCache.swift; sourceTree = "<group>"; };
-		53E6D98E1F409D1700681B1B /* ApiRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiRequest.swift; sourceTree = "<group>"; };
+		53E6D9901F416B9B00681B1B /* StringHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringHelper.swift; sourceTree = "<group>"; };
+		53E6D9921F418B0500681B1B /* ApiConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiConfig.swift; sourceTree = "<group>"; };
 		A7406373AB38974B301D80E0 /* Pods_Github.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Github.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC1ABA79051BE9CA3963D1E8 /* Pods-Github.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Github.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Github/Pods-Github.debug.xcconfig"; sourceTree = "<group>"; };
 		E092BDCDE4435BF026C7CD7C /* Pods-Github.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Github.release.xcconfig"; path = "Pods/Target Support Files/Pods-Github/Pods-Github.release.xcconfig"; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				53BAEDAD1F355A330059175B /* ApiHelper.swift */,
+				53E6D9901F416B9B00681B1B /* StringHelper.swift */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -314,7 +317,7 @@
 			isa = PBXGroup;
 			children = (
 				53E6D98A1F4086B600681B1B /* AppCache.swift */,
-				53E6D98E1F409D1700681B1B /* ApiRequest.swift */,
+				53E6D9921F418B0500681B1B /* ApiConfig.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -454,14 +457,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				53E6D98F1F409D1700681B1B /* ApiRequest.swift in Sources */,
 				53BAEDAE1F355A330059175B /* ApiHelper.swift in Sources */,
 				53E6D9791F3DFD6900681B1B /* PersonalTableViewController.swift in Sources */,
 				53BAEDA81F3556F30059175B /* LoginViewController.swift in Sources */,
 				53E6D9641F3A1A7400681B1B /* SubscribeModel.swift in Sources */,
+				53E6D9931F418B0500681B1B /* ApiConfig.swift in Sources */,
 				53E6D9561F39EA4700681B1B /* MainTarBarController.swift in Sources */,
 				53BAEDBF1F3572920059175B /* ExtensionViewController.swift in Sources */,
 				53E6D9891F3EB89800681B1B /* InfoTableViewCell.swift in Sources */,
+				53E6D9911F416B9B00681B1B /* StringHelper.swift in Sources */,
 				53BAEDB91F3561900059175B /* SubscribeTableViewController.swift in Sources */,
 				53E6D98B1F4086B600681B1B /* AppCache.swift in Sources */,
 				53BAEDC21F36CFA20059175B /* WebViewController.swift in Sources */,

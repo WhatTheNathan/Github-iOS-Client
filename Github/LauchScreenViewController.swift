@@ -16,7 +16,6 @@ class LauchScreenViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         if(Cache.currentUserKey.isEmpty){
-            print("here")
             let sb = UIStoryboard(name: "main", bundle: nil)
             let tarBarController = sb.instantiateViewController(withIdentifier: "mainTarBarController")
             self.present(tarBarController, animated: true)
