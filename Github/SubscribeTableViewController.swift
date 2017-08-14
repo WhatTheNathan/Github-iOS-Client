@@ -37,7 +37,7 @@ class SubscribeTableViewController: UITableViewController{
     func loadCache(){
 //        print(Cache.get("subscribe"))
         // If Empty
-        if(Cache.get(Cache.subscribeCacheKey) == " "){
+        if(Cache.subscribeCache.isEmpty){
             refreshCache()
             return
         }
@@ -45,7 +45,7 @@ class SubscribeTableViewController: UITableViewController{
         var subscribeEvents : [SubscribeModel] = []
         subscribeMovements.removeAll()
         
-        let value = Cache.get(Cache.subscribeCacheKey)
+        let value = Cache.subscribeCache.value
         let json = JSON.parse(value)
         for event in json{
             var eventString = event.1
@@ -98,7 +98,8 @@ class SubscribeTableViewController: UITableViewController{
     @IBAction func refreshCache() {
         showProgressDialog()
         //Fix: create closure to make request
-        Cache.subscribeRequest {
+        print("here1")
+        Cache.subscribeCache.dataRequest(ApiHelper.API_Root+"/users/" + ApiHelper.currentUser.userName + "/received_events") { 
             self.loadCache()
         }
     }

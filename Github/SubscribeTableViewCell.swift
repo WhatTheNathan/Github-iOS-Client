@@ -17,7 +17,7 @@ class SubscribeTableViewCell: UITableViewCell {
     
     private func updateUI(){
         let imageKey = "eventImage"+(subscribeMovement?.eventID)!
-        if let imageData = Cache.mainCache.data(forKey: imageKey){
+        if let imageData = Cache.imageCache.data(forKey: imageKey){
             UserProfileImgaeView.image = UIImage(data: imageData)
         }else{
             if let profileImageURL = subscribeMovement?.imageUrl {

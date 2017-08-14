@@ -22,10 +22,10 @@ class ApiHelper
     static var access_token : String = ""
     static var currentUser: UserModel{
         get{
-            return UserModel(SwiftyJSON.JSON.parse(Cache.get("currentUser")))
+            return UserModel(SwiftyJSON.JSON.parse(Cache.currentUserCache.value))
         }
         set{
-            Cache.set("currentUser", newValue.toJSON().rawString()!)
+            Cache.currentUserCache.value = (newValue.toJSON().rawString()!)
         }
     }
     

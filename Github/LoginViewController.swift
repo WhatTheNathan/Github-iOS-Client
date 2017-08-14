@@ -23,7 +23,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        if(Cache.get("currentUser") != " "){
+        if(!Cache.currentUserCache.isEmpty){
             performSegue(withIdentifier: "login", sender: LoginViewController.self)
         }
         if ApiHelper.code != ""{
@@ -67,7 +67,8 @@ class LoginViewController: UIViewController {
         }
     }
     
-    private func completionHandler(){        
+    private func completionHandler(){
+        // To Cache
         ApiHelper.currentUser = user
         hideProgressDialog()
         performSegue(withIdentifier: "login", sender: LoginViewController.self)

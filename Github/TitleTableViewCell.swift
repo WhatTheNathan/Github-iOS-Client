@@ -20,7 +20,7 @@ class TitleTableViewCell: UITableViewCell {
     private func updateUI(){
         profileImage.contentMode = UIViewContentMode.scaleAspectFit
         let profileImageKey = "profileImage"
-        if let imageData = Cache.mainCache.data(forKey: profileImageKey){
+        if let imageData = Cache.imageCache.data(forKey: profileImageKey){
             profileImage.image = UIImage(data: imageData)
         }else{
             if let imageUrl = URL(string: (title?.imageUrl)!){

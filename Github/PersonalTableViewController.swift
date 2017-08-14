@@ -17,6 +17,7 @@ class PersonalTableViewController: UITableViewController {
     }
     
     var profiles : [[personalItem]] = []
+    var profileUrl : String = ApiHelper.API_Root+"/users/" + ApiHelper.currentUser.userName
     
     // MARK: - VC lifecycle
     override func viewDidLoad() {
@@ -25,7 +26,6 @@ class PersonalTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.navigationController?.navigationBar.backgroundColor = UIColor.flatBlack
-        Cache.set(Cache.profileCacheKey, " ")
         loadCache()
     }
     
@@ -35,7 +35,7 @@ class PersonalTableViewController: UITableViewController {
     }
     
     private func loadCache(){
-        if(Cache.get(Cache.profileCacheKey) == " "){
+        if(Cache.profileCache.isEmpty){
             refreshCache()
             return
         }
@@ -43,7 +43,7 @@ class PersonalTableViewController: UITableViewController {
         var titleProfile : [personalItem] = []
         var infoProfile : [personalItem] = []
         profiles.removeAll()
-        let value = Cache.get(Cache.profileCacheKey)
+        let value = Cache.profileCache.value
         let json = JSON.parse(value)
         
         //parse titleModule
@@ -75,7 +75,7 @@ class PersonalTableViewController: UITableViewController {
 
     private func refreshCache() {
         showProgressDialog()
-        Cache.profileRequest {
+        Cache.profileCache.dataRequest(profileUrl) { 
             self.loadCache()
         }
     }
