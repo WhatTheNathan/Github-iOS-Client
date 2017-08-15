@@ -67,6 +67,22 @@ class AppCache{
         }
     }
     
+    func reposRequest(_ userName : String , completionHandler: @escaping ()->()){
+        provider.request(.repoList(name: userName)) {result in
+            print("dsadsa")
+            switch result {
+            case let .success(moyaResponse):
+                let data = moyaResponse.data
+                let json = JSON(data)
+                self.set(self.key, json.rawString()!)
+                completionHandler()
+            case let .failure(error):
+                print(error)
+            }
+        }
+    }
+    
+    
     private func get(_ key : String) -> String {
         if let value = AppCache.myCache.string(forKey: key){
             return value

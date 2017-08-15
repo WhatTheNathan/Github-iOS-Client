@@ -20,10 +20,16 @@ class MainTarBarController: UITabBarController {
         
         self.viewControllers?[0].tabBarItem = homeTabBarItem
         
+        let reposImage = #imageLiteral(resourceName: "repos.png").withRenderingMode(.alwaysOriginal)
+        let reposTabBarItem = UITabBarItem(title: "Repos", image: reposImage,selectedImage: nil)
+        reposTabBarItem.imageInsets = UIEdgeInsetsMake(4, 0, -4, 0)
+        self.viewControllers?[1].tabBarItem = reposTabBarItem
+        
         let personalImage = #imageLiteral(resourceName: "personal.png").withRenderingMode(.alwaysOriginal)
-        let personalTabBarItem = UITabBarItem(title: "Personal", image: personalImage,selectedImage: nil)
+        let personalTabBarItem = UITabBarItem(title: "Me", image: personalImage,selectedImage: nil)
         personalTabBarItem.imageInsets = UIEdgeInsetsMake(4, 0, -4, 0)
-        self.viewControllers?[1].tabBarItem = personalTabBarItem
+        self.viewControllers?[2].tabBarItem = personalTabBarItem
+        
     }
 
     override func didReceiveMemoryWarning() {

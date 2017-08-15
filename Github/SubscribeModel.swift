@@ -13,23 +13,32 @@ class SubscribeModel{
     var action: String
     var created: Date
     var repoName: String
-    var imageUrl : URL
+    var repoUrl: String
+    var imageUrl: URL
     var description: String
-    var eventID : String
+    var eventID: String
+    var userNameRange: NSRange
+    var repoNameRange: NSRange
     
     init(_ userName:String,
          _ action: String,
          _ created: Date,
          _ repoName: String,
+         _ repoUrl: String,
          _ imageUrl:URL,
          _ description:String,
-         _ eventID: String) {
+         _ eventID: String,
+         _ userNameRange: NSRange,
+         _ repoNameRange: NSRange) {
         self.userName = userName
         self.action = action
         self.created = created
         self.repoName = repoName
+        self.repoUrl = repoUrl
         self.imageUrl = imageUrl
         self.description = description
         self.eventID = eventID
+        self.userNameRange = userNameRange
+        self.repoNameRange = repoNameRange
     }
 }

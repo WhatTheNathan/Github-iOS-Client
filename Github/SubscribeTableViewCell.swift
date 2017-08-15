@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ChameleonFramework
 
 class SubscribeTableViewCell: UITableViewCell {
     @IBOutlet weak var UserProfileImgaeView: UIImageView!
@@ -34,8 +35,12 @@ class SubscribeTableViewCell: UITableViewCell {
                 UserProfileImgaeView?.image = nil
             }
         }
-        
-        MovementLabel.text = subscribeMovement?.description
+        let para = subscribeMovement?.description
+        let amountText = NSMutableAttributedString.init(string: para!)
+        let colorAttribute = [ NSForegroundColorAttributeName: UIColor.flatBlue ]
+        amountText.addAttributes(colorAttribute, range: (subscribeMovement?.userNameRange)!)
+        amountText.addAttributes(colorAttribute, range: (subscribeMovement?.repoNameRange)!)
+        MovementLabel.attributedText = amountText
         
         CreatedTimeLabel.text = subscribeMovement?.created.string()
         

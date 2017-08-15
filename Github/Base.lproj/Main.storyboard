@@ -47,7 +47,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fuv-OH-cRj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2068" y="346.77661169415296"/>
+            <point key="canvasLocation" x="-2290" y="752"/>
         </scene>
         <!--mainTarBarController-->
         <scene sceneID="azl-qn-5rP">
@@ -60,12 +60,13 @@
                     </tabBar>
                     <connections>
                         <segue destination="x8X-Cs-Hdp" kind="relationship" relationship="viewControllers" id="AGl-wE-f4x"/>
-                        <segue destination="HQQ-1O-5ar" kind="relationship" relationship="viewControllers" id="v7e-Gw-HiJ"/>
+                        <segue destination="GuD-LO-o53" kind="relationship" relationship="viewControllers" id="OVn-N2-zKK"/>
+                        <segue destination="HQQ-1O-5ar" kind="relationship" relationship="viewControllers" id="NKl-2o-dI8"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jeh-9D-RWv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1154" y="347"/>
+            <point key="canvasLocation" x="-1191" y="752"/>
         </scene>
         <!--Subscribe-->
         <scene sceneID="9si-XY-yzV">
@@ -122,6 +123,7 @@
                                     <outlet property="CreatedTimeLabel" destination="ZsC-3J-8hJ" id="eLG-ZR-7iq"/>
                                     <outlet property="MovementLabel" destination="fYY-Sa-BZz" id="78M-dz-lq1"/>
                                     <outlet property="UserProfileImgaeView" destination="CiK-yY-tH3" id="vdG-f3-X3F"/>
+                                    <segue destination="Tio-lf-Cfb" kind="show" identifier="repoUrl" id="Tbt-xn-KSp"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -181,7 +183,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iCe-gU-SMk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1154" y="-757"/>
+            <point key="canvasLocation" x="-1178" y="-649"/>
         </scene>
         <!--Profile-->
         <scene sceneID="1TU-cA-3GL">
@@ -301,6 +303,93 @@
             </objects>
             <point key="canvasLocation" x="21.600000000000001" y="751.57421289355329"/>
         </scene>
+        <!--Repos Table View Controller-->
+        <scene sceneID="5nr-5u-gRk">
+            <objects>
+                <tableViewController id="Y53-ly-x0U" customClass="ReposTableViewController" customModule="Github" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="134" sectionHeaderHeight="28" sectionFooterHeight="28" id="Rxa-B6-iBG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Repos" rowHeight="134" id="WG8-Km-Y3u" customClass="ReposTableViewCell" customModule="Github" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="134"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WG8-Km-Y3u" id="INP-Xe-clW">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="134"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1cF-zD-4GC">
+                                            <rect key="frame" x="8" y="8" width="35" height="35"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RepoName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3C9-tY-M8U">
+                                            <rect key="frame" x="51" y="8" width="222" height="35"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sER-b8-fMG">
+                                            <rect key="frame" x="51" y="40" width="306" height="65"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="languaue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mcx-sF-43D">
+                                            <rect key="frame" x="51" y="104" width="70" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="umR-0n-IO2">
+                                            <rect key="frame" x="256" y="104" width="101" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="101" id="62c-vT-GPo"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="1cF-zD-4GC" firstAttribute="top" secondItem="3C9-tY-M8U" secondAttribute="top" id="1JZ-d1-xBR"/>
+                                        <constraint firstItem="1cF-zD-4GC" firstAttribute="bottom" secondItem="3C9-tY-M8U" secondAttribute="bottom" id="8kX-wJ-X8I"/>
+                                        <constraint firstItem="sER-b8-fMG" firstAttribute="leading" secondItem="1cF-zD-4GC" secondAttribute="trailing" constant="8" symbolic="YES" id="D8h-Zt-fHW"/>
+                                        <constraint firstItem="Mcx-sF-43D" firstAttribute="baseline" secondItem="umR-0n-IO2" secondAttribute="baseline" id="Hec-A3-5iH"/>
+                                        <constraint firstItem="Mcx-sF-43D" firstAttribute="top" secondItem="3C9-tY-M8U" secondAttribute="bottom" constant="61" id="J9i-QP-7N2"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="1cF-zD-4GC" secondAttribute="bottom" constant="82.5" id="SbU-OQ-OBv"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="sER-b8-fMG" secondAttribute="trailing" constant="10" id="TMV-cS-ziJ"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="3C9-tY-M8U" secondAttribute="trailing" constant="94" id="XXW-dm-8dC"/>
+                                        <constraint firstItem="sER-b8-fMG" firstAttribute="leading" secondItem="INP-Xe-clW" secondAttribute="leadingMargin" constant="43" id="ZD9-fI-sc1"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="sER-b8-fMG" secondAttribute="bottom" constant="20.5" id="aiq-xm-zVc"/>
+                                        <constraint firstItem="1cF-zD-4GC" firstAttribute="leading" secondItem="INP-Xe-clW" secondAttribute="leadingMargin" id="bCz-V2-Cfa"/>
+                                        <constraint firstItem="1cF-zD-4GC" firstAttribute="top" secondItem="INP-Xe-clW" secondAttribute="topMargin" id="fWc-2H-y92"/>
+                                        <constraint firstItem="sER-b8-fMG" firstAttribute="leading" secondItem="Mcx-sF-43D" secondAttribute="leading" id="hh2-p1-shD"/>
+                                        <constraint firstItem="sER-b8-fMG" firstAttribute="trailing" secondItem="umR-0n-IO2" secondAttribute="trailing" id="mb3-uJ-LWX"/>
+                                        <constraint firstItem="sER-b8-fMG" firstAttribute="top" secondItem="INP-Xe-clW" secondAttribute="topMargin" constant="32" id="pw1-T8-yUt"/>
+                                        <constraint firstItem="3C9-tY-M8U" firstAttribute="leading" secondItem="sER-b8-fMG" secondAttribute="leading" id="w8a-PA-8eX"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="language" destination="Mcx-sF-43D" id="sBd-HU-Sfd"/>
+                                    <outlet property="repoDescription" destination="sER-b8-fMG" id="CW7-tk-AtQ"/>
+                                    <outlet property="repoName" destination="3C9-tY-M8U" id="n6K-dT-k5K"/>
+                                    <outlet property="repoTypeImage" destination="1cF-zD-4GC" id="wry-Nb-Lnm"/>
+                                    <outlet property="updatedTime" destination="umR-0n-IO2" id="iOE-Z0-U6H"/>
+                                    <segue destination="Tio-lf-Cfb" kind="show" identifier="repo url" id="LUF-xY-ajy"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Y53-ly-x0U" id="KIh-5k-6Ll"/>
+                            <outlet property="delegate" destination="Y53-ly-x0U" id="oBU-4S-v0Y"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="sdv-PS-5C3"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zza-nX-rB8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="981.60000000000002" y="1512.5937031484259"/>
+        </scene>
         <!--Item-->
         <scene sceneID="Ivj-1T-hzZ">
             <objects>
@@ -320,8 +409,48 @@
             </objects>
             <point key="canvasLocation" x="22" y="-45"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="HoM-FK-pdF">
+            <objects>
+                <viewController id="ynC-21-K6g" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="d9I-KE-L7K"/>
+                        <viewControllerLayoutGuide type="bottom" id="m8L-sI-r9Q"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Jra-Us-1dh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vD9-G8-Vdm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1178" y="1529"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="IlC-Lt-Zsv">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GuD-LO-o53" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="2cW-dx-Chk"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="SKG-Lk-IOK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y53-ly-x0U" kind="relationship" relationship="rootViewController" id="f66-Zt-Xas"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zme-kG-6bH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="42.399999999999999" y="1512.5937031484259"/>
+        </scene>
     </scenes>
     <resources>
         <image name="githubLOGO.jpg" width="626" height="626"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="LUF-xY-ajy"/>
+    </inferredMetricsTieBreakers>
 </document>

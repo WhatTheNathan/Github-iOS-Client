@@ -36,7 +36,6 @@ class SubscribeTableViewController: UITableViewController{
     
     //Mark: -Logic
     func loadCache(){
-//        print(Cache.get("subscribe"))
         // If Empty
         if(Cache.subscribeCache.isEmpty){
             refreshCache()
@@ -48,16 +47,33 @@ class SubscribeTableViewController: UITableViewController{
         
         let value = Cache.subscribeCache.value
         let json = JSON.parse(value)
+        
         for event in json{
             var eventString = event.1
             //parse userName
-            let userName = eventString["actor"]["login"].string!
+            let userName = eventString["actor"]["login"].stringValue
+            let nsUserName = userName as NSString
+            let userNameRange = NSMakeRange(0, nsUserName.length)
             
             //parse imageUrl
-            let imageUrl = URL(string: eventString["actor"]["avatar_url"].string!)
+            let imageUrl = URL(string: eventString["actor"]["avatar_url"].stringValue)
+            
+            //parse action
+            var action : String = ""
+            if eventString["payload"]["action"].exists(){
+                action = "starred"
+            }else{
+                action = "forked"
+            }
+            let nsAction = action as NSString
                         
-            //parse repoName
-            let repoName = eventString["repo"]["name"].string!
+            //parse repo
+            let repoName = eventString["repo"]["name"].stringValue
+            let repoUrl = eventString["repo"]["url"].stringValue
+            let nsRepoName = repoName as NSString
+            let startIndex = nsUserName.length + 2 + nsAction.length
+            let repoNameRange = NSMakeRange(startIndex, nsRepoName.length)
+            
                         
             //parse Date
             var createdDateString = eventString["created_at"].string!
@@ -67,14 +83,7 @@ class SubscribeTableViewController: UITableViewController{
             let range = fromIndex..<toIndex
             createdDateString.replaceSubrange(range, with: " ")
             let createdDate = try! DateInRegion(string: createdDateString, format: .custom("yyyy-MM-dd HH:mm:ss"), fromRegion: Region.Local())
-                        
-            //parse action
-            var action : String = ""
-            if eventString["payload"]["action"].exists(){
-                action = "starred"
-            }else{
-                action = "forked"
-            }
+            
             
             //parse ID
             let eventID = eventString["id"].stringValue
@@ -86,9 +95,13 @@ class SubscribeTableViewController: UITableViewController{
                                                 action,
                                                 (createdDate?.absoluteDate)!,
                                                 repoName,
+                                                repoUrl,
                                                 imageUrl!,
                                                 description,
-                                                eventID)
+                                                eventID,
+                                                userNameRange,
+                                                repoNameRange
+                                                )
             subscribeEvents.append(subscribeEvent)
             }
         subscribeMovements.append(subscribeEvents)
@@ -98,7 +111,6 @@ class SubscribeTableViewController: UITableViewController{
     
     @IBAction func refreshCache() {
         showProgressDialog()
-        //Fix: create closure to make request
         Cache.subscribeCache.subscribeRequest(ApiHelper.currentUser.userName, "received_events") {
             self.loadCache()
             self.refreshControl?.endRefreshing()
@@ -109,7 +121,6 @@ class SubscribeTableViewController: UITableViewController{
     override func numberOfSections(in tableView: UITableView) -> Int {
         return subscribeMovements.count
     }
-
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return subscribeMovements[section].count
@@ -124,13 +135,19 @@ class SubscribeTableViewController: UITableViewController{
         return cell
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        let destinationViewController = segue.destination
+        if segue.identifier == "repoUrl"{
+            if let webMVC = destinationViewController as? WebViewController{
+                if let cell = sender as? SubscribeTableViewCell{
+                    let urlString = ApiHelper.Home_Root + "/" + (cell.subscribeMovement?.repoName)!
+                    let url = URL(string: urlString)
+                    webMVC.webUrl = url
+                    webMVC.navigationItem.title = "Repo Infomation"
+                }
+            }
+        }
     }
-    */
+    
 }

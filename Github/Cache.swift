@@ -38,10 +38,16 @@ class Cache{
         return provider
     }
 
-
     //Mark: - currentUser
     static let currentUserKey = "currentUser"
     static let currentUserCache = AppCache(currentUserKey){
+        var provider = MoyaProvider<ApiConfig>()
+        return provider
+    }
+    
+    //Mark: - repos
+    static let reposKey = "reposList"
+    static let reposCache = AppCache(reposKey){
         var provider = MoyaProvider<ApiConfig>()
         return provider
     }
