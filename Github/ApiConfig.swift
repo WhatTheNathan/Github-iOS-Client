@@ -11,8 +11,7 @@ import Moya
 
 enum ApiConfig{
     case userInfo(name: String)
-    case userEvent(name: String , event: String)
-    case repoList(name: String)
+    case userDetail(name: String , detail: String)
 }
 
 extension ApiConfig: TargetType{
@@ -22,30 +21,28 @@ extension ApiConfig: TargetType{
         switch self {
         case .userInfo(let name):
             return "/users/" + name
-        case .userEvent(let name , let event):
-            return "/users/" + name + "/" + event
-        case .repoList(let name):
-            return "/users/" + name + "/repos"
+        case .userDetail(let name , let detail):
+            return "/users/" + name + "/" + detail
         }
     }
     
     var method: Moya.Method{
         switch self {
-        case .userInfo, .userEvent, .repoList:
+        case .userInfo, .userDetail:
             return .get
         }
     }
     
     var parameters: [String: Any]? {
         switch self {
-        case .userInfo, .userEvent, .repoList:
+        case .userInfo, .userDetail:
             return nil
         }
     }
     
     var parameterEncoding: ParameterEncoding {
         switch self {
-        case .userInfo, .userEvent, .repoList:
+        case .userInfo, .userDetail:
             return URLEncoding.default // Send parameters in URL for GET, DELETE and HEAD. For other HTTP methods, parameters will be sent in request body
         }
     }
@@ -54,16 +51,14 @@ extension ApiConfig: TargetType{
         switch self {
         case .userInfo(let name):
             return "{\"UserName\": \(name)}".utf8Encoded
-        case .userEvent(let name, let event):
-            return "{\"UserName\": \(name) , \"Event\": \(event)}".utf8Encoded
-        case .repoList(let name):
-            return "{\"UserName\": \(name)}".utf8Encoded
+        case .userDetail(let name, let detail):
+            return "{\"UserName\": \(name) , \"Detail\": \(detail)}".utf8Encoded
         }
     }
     
     var task: Task {
         switch self {
-        case .userInfo, .userEvent, .repoList:
+        case .userInfo, .userDetail:
             return .request
         }
     }

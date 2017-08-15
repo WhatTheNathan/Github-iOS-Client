@@ -14,4 +14,12 @@ extension String{
         let endIndex = index(self.startIndex, offsetBy: range.upperBound)
         return self[startIndex..<endIndex]
     }
+    
+    var urlEscaped: String {
+        return self.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+    }
+    
+    var utf8Encoded: Data {
+        return self.data(using: .utf8)!
+    }
 }

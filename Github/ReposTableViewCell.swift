@@ -20,9 +20,9 @@ class ReposTableViewCell: UITableViewCell {
     private func updateUI(){
         repoTypeImage.contentMode = UIViewContentMode.scaleAspectFit
         if(repo?.repoType == "create"){
-            repoTypeImage.image = #imageLiteral(resourceName: "createRepo.png")
+            repoTypeImage.image = #imageLiteral(resourceName: "createdRepo.png")
         }else{
-            repoTypeImage.image = #imageLiteral(resourceName: "fork.png")
+            repoTypeImage.image = #imageLiteral(resourceName: "forkedRepo.png")
         }
         
         let text =  repo?.repoName

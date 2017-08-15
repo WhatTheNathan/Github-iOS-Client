@@ -105,13 +105,13 @@ class SubscribeTableViewController: UITableViewController{
             subscribeEvents.append(subscribeEvent)
             }
         subscribeMovements.append(subscribeEvents)
-        hideProgressDialog()
         tableView.reloadData()
+        hideProgressDialog()
     }
     
     @IBAction func refreshCache() {
         showProgressDialog()
-        Cache.subscribeCache.subscribeRequest(ApiHelper.currentUser.userName, "received_events") {
+        Cache.subscribeCache.detailRequest(ApiHelper.currentUser.userName, "received_events") {
             self.loadCache()
             self.refreshControl?.endRefreshing()
         }

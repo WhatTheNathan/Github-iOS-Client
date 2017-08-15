@@ -14,7 +14,7 @@ import Moya
 class AppCache{
     static let myCache = UserDefaults.standard
     
-    let key : String
+    var key : String
     var value : String{
         set{
             set(key, newValue)
@@ -39,8 +39,8 @@ class AppCache{
         return value == ""
     }
     
-    func subscribeRequest(_ userName : String , _ event : String , completionHandler: @escaping ()->()) {
-        provider.request(.userEvent(name: userName , event: event)) {result in
+    func detailRequest(_ userName : String , _ detail : String , completionHandler: @escaping ()->()) {
+        provider.request(.userDetail(name: userName , detail: detail)) {result in
             switch result {
             case let .success(moyaResponse):
                 let data = moyaResponse.data
@@ -67,21 +67,6 @@ class AppCache{
         }
     }
     
-    func reposRequest(_ userName : String , completionHandler: @escaping ()->()){
-        provider.request(.repoList(name: userName)) {result in
-            print("dsadsa")
-            switch result {
-            case let .success(moyaResponse):
-                let data = moyaResponse.data
-                let json = JSON(data)
-                self.set(self.key, json.rawString()!)
-                completionHandler()
-            case let .failure(error):
-                print(error)
-            }
-        }
-    }
-    
     
     private func get(_ key : String) -> String {
         if let value = AppCache.myCache.string(forKey: key){
@@ -92,5 +77,9 @@ class AppCache{
     
     func set(_ key : String, _ value : String) {
         AppCache.myCache.set(value, forKey: key)
+    }
+    
+    func addKeysuffix(_ suffixKey : String){
+        key += suffixKey
     }
 }

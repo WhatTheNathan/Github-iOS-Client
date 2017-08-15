@@ -17,9 +17,12 @@ class ReposTableViewController: UITableViewController {
         tableView.estimatedRowHeight = 50
         super.viewDidLoad()
         self.navigationController?.navigationBar.backgroundColor = UIColor.flatBlack
-//        Cache.reposCache.set(Cache.reposKey, "")
+        Cache.reposCache.addKeysuffix(repoOwner + reposType)
         loadCache()
     }
+    
+    var reposType : String = "repos"
+    var repoOwner : String = ApiHelper.currentUser.userName
     
     //Mark : Model
     var reposLists : [[ReposModel]] = []
@@ -79,13 +82,13 @@ class ReposTableViewController: UITableViewController {
             repoList.append(repo)
         }
         reposLists.append(repoList)
-        hideProgressDialog()
         tableView.reloadData()
+        hideProgressDialog()
     }
 
     @IBAction func refreshCache() {
         showProgressDialog()
-        Cache.reposCache.reposRequest(ApiHelper.currentUser.userName) {
+        Cache.reposCache.detailRequest(repoOwner,reposType) {
             self.loadCache()
             self.refreshControl?.endRefreshing()
         }
@@ -112,8 +115,6 @@ class ReposTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
-    
-
     
     // MARK: - Navigation
 

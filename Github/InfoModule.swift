@@ -12,21 +12,30 @@ import SwiftyJSON
 class InfoModule{
     var infoName : String
     var infoUrl : String
+    var infoType : infoItem
+    var imageType : String
     
-    init(_ infoName : String, _ infoUrl : String) {
+    init(_ infoName : String,
+         _ infoUrl : String,
+         _ infoType : infoItem,
+         _ imageType : String) {
         self.infoName = infoName
         self.infoUrl = infoUrl
+        self.infoType = infoType
+        self.imageType = imageType
     }
     
-    convenience init(_ json : JSON){
-        self.init(json["infoName"].stringValue,
-                  json["infoUrl"].stringValue)
-    }
-    
-    func toJSON() -> JSON {
-        return JSON([
-            "infoName" : infoName,
-            "infoUrl" : infoUrl
-            ])
-    }
+//    convenience init(_ json : JSON){
+//        self.init(json["infoName"].stringValue,
+//                  json["infoUrl"].stringValue,
+//                  json["infoType"].stringValue)
+//    }
+//    
+//    func toJSON() -> JSON {
+//        return JSON([
+//            "infoName" : infoName,
+//            "infoUrl" : infoUrl,
+//            "infoType" : infoType
+//            ])
+//    }
 }
