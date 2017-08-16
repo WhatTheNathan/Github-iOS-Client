@@ -17,6 +17,8 @@ class ReposModel{
     var description : String
     var updateTime : DateInRegion
     var language : String
+    var starNumber : String
+    var forkNumber : String
     
     init(_ repoName: String,
          _ repoFullName : String,
@@ -24,7 +26,9 @@ class ReposModel{
          _ repoType: String,
          _ description: String,
          _ updateTime: DateInRegion,
-         _ language: String){
+         _ language: String,
+         _ starNumber : String,
+         _ forkNumber : String){
         self.repoName = repoName
         self.repoFullName = repoFullName
         self.repoID = repoID
@@ -32,5 +36,7 @@ class ReposModel{
         self.description = description
         self.updateTime = updateTime
         self.language = language
+        self.starNumber = starNumber
+        self.forkNumber = forkNumber
     }
 }

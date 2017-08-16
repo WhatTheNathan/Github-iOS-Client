@@ -12,11 +12,12 @@ class MainTarBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBar.barTintColor = UIColor.white
+        self.tabBar.barTintColor = UIColor.flatWhite
         
         let homeImage = #imageLiteral(resourceName: "home.png").withRenderingMode(.alwaysOriginal)
         let homeTabBarItem = UITabBarItem(title: "Home", image: homeImage,selectedImage: nil)
         homeTabBarItem.imageInsets = UIEdgeInsetsMake(4, 0, -4, 0)
+//        homeTabBarItem.selectedImage = homeImage.
         
         self.viewControllers?[0].tabBarItem = homeTabBarItem
         

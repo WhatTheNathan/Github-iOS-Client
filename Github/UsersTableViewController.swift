@@ -21,6 +21,8 @@ class UsersTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         Cache.usersCahce.setKeysuffix((userName + userType))
+        self.navigationController?.navigationBar.barTintColor = UIColor.flatWhite
+        self.navigationController?.navigationBar.isTranslucent = true
     }
 
     // MARK: - Model

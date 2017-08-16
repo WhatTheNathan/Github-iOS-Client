@@ -32,5 +32,8 @@ class InfoTableViewCell: UITableViewCell {
             }
         }
         infoLabel.text = info?.infoName
+        if info?.infoName == "Not Set"{
+            self.accessoryType = .none
+        }
     }
 }

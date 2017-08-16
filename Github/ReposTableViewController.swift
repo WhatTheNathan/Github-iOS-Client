@@ -15,14 +15,16 @@ class ReposTableViewController: UITableViewController {
     //Mark: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.estimatedRowHeight = 50
+//        tableView.estimatedRowHeight = 50
+//        tableView.rowHeight = UITableViewAutomaticDimension
         Cache.reposCache.setKeysuffix(repoOwner + reposType)
         loadCache()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        self.navigationController?.navigationBar.backgroundColor = UIColor.flatBlack
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.navigationController?.navigationBar.barTintColor = UIColor.flatWhite
+        self.navigationController?.navigationBar.isTranslucent = true
     }
     
     var reposType : String = "repos"
@@ -67,6 +69,12 @@ class ReposTableViewController: UITableViewController {
             //parse language
             let language = repoString["language"].stringValue
             
+            //parse starNumber
+            let starNumber = repoString["stargazers_count"].stringValue
+            
+            //parse forkNumber
+            let forkNumber = repoString["forks"].stringValue
+            
             //parse updatedTime
             var updatedDateString = repoString["updated_at"].stringValue
             updatedDateString.remove(at: updatedDateString.index(before: updatedDateString.endIndex))
@@ -89,7 +97,9 @@ class ReposTableViewController: UITableViewController {
                                   repoType,
                                   repoDescription,
                                   updatedTime!,
-                                  language)
+                                  language,
+                                  starNumber,
+                                  forkNumber)
             repoList.append(repo)
         }
         reposLists.append(repoList)
@@ -123,9 +133,9 @@ class ReposTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
-    }
+//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return UITableViewAutomaticDimension
+//    }
     
     // MARK: - Navigation
 

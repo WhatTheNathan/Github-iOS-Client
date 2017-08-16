@@ -10,7 +10,6 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import SwiftDate
-import ChameleonFramework
 
 class SubscribeTableViewController: UITableViewController{
 
@@ -21,7 +20,8 @@ class SubscribeTableViewController: UITableViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        self.navigationController?.navigationBar.backgroundColor = UIColor.flatBlack
+        self.navigationController?.navigationBar.barTintColor = UIColor.flatWhite
+        self.navigationController?.navigationBar.isTranslucent = true
 //        Cache.subscribeCache.set(Cache.subscribeCacheKey, "")
         loadCache()
     }

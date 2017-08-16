@@ -33,7 +33,8 @@ class PersonalTableViewController: UITableViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        self.navigationController?.navigationBar.backgroundColor = UIColor.flatBlack
+        self.navigationController?.navigationBar.barTintColor = UIColor.flatWhite
+        self.navigationController?.navigationBar.isTranslucent = true
     }
     
     override func didReceiveMemoryWarning() {
@@ -151,8 +152,8 @@ class PersonalTableViewController: UITableViewController {
             return 278
         case .Info( _):
             return 54
-        default:
-            return UITableViewAutomaticDimension
+//        default:
+//            return UITableViewAutomaticDimension
         }
     }
     

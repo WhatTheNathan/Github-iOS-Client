@@ -15,7 +15,8 @@ class ReposTableViewCell: UITableViewCell {
     @IBOutlet weak var repoDescription: UILabel!
     @IBOutlet weak var language: UILabel!
     @IBOutlet weak var updatedTime: UILabel!
-    
+    @IBOutlet weak var starNumberLabel: UILabel!
+    @IBOutlet weak var forkNumberLabel: UILabel!
     var repo : ReposModel? { didSet { updateUI() } }
     
     private func updateUI(){
@@ -33,6 +34,8 @@ class ReposTableViewCell: UITableViewCell {
         let range = NSMakeRange(0, nsText.length)
         atributesText.addAttributes(colorAttribute, range: range)
         repoName.attributedText = atributesText
+        
+        repoDescription.contentMode = .scaleAspectFit
         
         repoDescription.text = repo?.description
         language.text = repo?.language
@@ -64,6 +67,9 @@ class ReposTableViewCell: UITableViewCell {
         }
         
         updatedTime.text = displayTime
+        
+        starNumberLabel.text = repo?.starNumber
+        forkNumberLabel.text = repo?.forkNumber
         
     }
 }
