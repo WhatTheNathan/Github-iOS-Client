@@ -82,7 +82,7 @@ class SubscribeTableViewController: UITableViewController{
             let toIndex = createdDateString.index(createdDateString.startIndex,offsetBy: 11)
             let range = fromIndex..<toIndex
             createdDateString.replaceSubrange(range, with: " ")
-            let createdDate = try! DateInRegion(string: createdDateString, format: .custom("yyyy-MM-dd HH:mm:ss"), fromRegion: Region.Local())
+            let createdDate = DateInRegion(string: createdDateString, format: .custom("yyyy-MM-dd HH:mm:ss"), fromRegion: Region.Local())
             
             
             //parse ID
@@ -93,7 +93,7 @@ class SubscribeTableViewController: UITableViewController{
 
             let subscribeEvent = SubscribeModel(userName,
                                                 action,
-                                                (createdDate?.absoluteDate)!,
+                                                createdDate!,
                                                 repoName,
                                                 repoUrl,
                                                 imageUrl!,

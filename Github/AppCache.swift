@@ -14,7 +14,11 @@ import Moya
 class AppCache{
     static let myCache = UserDefaults.standard
     
-    var key : String
+    var initialKey : String
+    var suffixKey : String
+    var key : String{
+        return initialKey+suffixKey
+    }
     var value : String{
         set{
             set(key, newValue)
@@ -31,7 +35,8 @@ class AppCache{
     let providerCreator : ()->MoyaProvider<ApiConfig>
     
     init(_ key : String , provider : @escaping () -> MoyaProvider<ApiConfig>) {
-        self.key = key
+        self.initialKey = key
+        self.suffixKey = ""
         self.providerCreator = provider
     }
     
@@ -67,7 +72,6 @@ class AppCache{
         }
     }
     
-    
     private func get(_ key : String) -> String {
         if let value = AppCache.myCache.string(forKey: key){
             return value
@@ -79,7 +83,7 @@ class AppCache{
         AppCache.myCache.set(value, forKey: key)
     }
     
-    func addKeysuffix(_ suffixKey : String){
-        key += suffixKey
+    func setKeysuffix(_ key : String){
+        suffixKey = key
     }
 }

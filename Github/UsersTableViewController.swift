@@ -20,7 +20,7 @@ class UsersTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        Cache.usersCahce.addKeysuffix((userName + userType))
+        Cache.usersCahce.setKeysuffix((userName + userType))
     }
 
     // MARK: - Model
@@ -96,15 +96,17 @@ class UsersTableViewController: UITableViewController {
         return cell
     }
  
-    /*
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        let destinationViewController = segue.destination
+        if segue.identifier == "user profile"{
+            if let personalVC = destinationViewController as? PersonalTableViewController{
+                if let cell = sender as? UsersTableViewCell{
+                    personalVC.profileUserName = (cell.user?.userName)!
+                    personalVC.navigationItem.title = (cell.user?.userName)!
+                }
+            }
+        }
     }
-    */
     
-
 }

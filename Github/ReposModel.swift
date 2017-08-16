@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftDate
 
 class ReposModel{
     var repoName : String
@@ -14,7 +15,7 @@ class ReposModel{
     var repoID : String
     var repoType : String
     var description : String
-    var updateTime : Date
+    var updateTime : DateInRegion
     var language : String
     
     init(_ repoName: String,
@@ -22,7 +23,7 @@ class ReposModel{
          _ repoID: String,
          _ repoType: String,
          _ description: String,
-         _ updateTime: Date,
+         _ updateTime: DateInRegion,
          _ language: String){
         self.repoName = repoName
         self.repoFullName = repoFullName

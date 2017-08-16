@@ -14,11 +14,15 @@ class ReposTableViewController: UITableViewController {
 
     //Mark: Life Cycle
     override func viewDidLoad() {
-        tableView.estimatedRowHeight = 50
         super.viewDidLoad()
-        self.navigationController?.navigationBar.backgroundColor = UIColor.flatBlack
-        Cache.reposCache.addKeysuffix(repoOwner + reposType)
+        tableView.estimatedRowHeight = 50
+        Cache.reposCache.setKeysuffix(repoOwner + reposType)
         loadCache()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        self.navigationController?.navigationBar.backgroundColor = UIColor.flatBlack
     }
     
     var reposType : String = "repos"
@@ -70,14 +74,21 @@ class ReposTableViewController: UITableViewController {
             let toIndex = updatedDateString.index(updatedDateString.startIndex,offsetBy: 11)
             let range = fromIndex..<toIndex
             updatedDateString.replaceSubrange(range, with: " ")
-            let updatedTime = try! DateInRegion(string: updatedDateString, format: .custom("yyyy-MM-dd HH:mm:ss"), fromRegion: Region.Local())
+            let updatedTime = DateInRegion(string: updatedDateString, format: .custom("yyyy-MM-dd HH:mm:ss"), fromRegion: Region.Local())
+//            let nowDate = DateInRegion(absoluteDate: Date(), in: Region.Local())
+//            print(nowDate)
+//            let what = DateTimeInterval(start: updatedTime!.absoluteDate, end: nowDate.absoluteDate)
+//            print(what)
+//            let diff_in_week = (updatedTime! - nowDate).in(.day)
+//            print(diff_in_week!)
+            
             
             let repo = ReposModel(repoName,
                                   repoFullName,
                                   repoID,
                                   repoType,
                                   repoDescription,
-                                  (updatedTime?.absoluteDate)!,
+                                  updatedTime!,
                                   language)
             repoList.append(repo)
         }
@@ -131,6 +142,4 @@ class ReposTableViewController: UITableViewController {
             }
         }
     }
-    
-
 }

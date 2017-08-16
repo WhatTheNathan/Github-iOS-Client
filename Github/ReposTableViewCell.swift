@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftDate
 
 class ReposTableViewCell: UITableViewCell {
     @IBOutlet weak var repoTypeImage: UIImageView!
@@ -36,7 +37,33 @@ class ReposTableViewCell: UITableViewCell {
         repoDescription.text = repo?.description
         language.text = repo?.language
         
-        updatedTime.text = repo?.updateTime.string()
+        var displayTime = ""
+        if let time = repo?.updateTime{
+            let nowDate = DateInRegion(absoluteDate: Date(), in: Region.Local())
+            let intervalInMonth = (time - nowDate).in(.month)
+            let intervalInDay = (time - nowDate).in(.day)
+            let intervalInHour = (time - nowDate).in(.hour)
+            let intervalInMinute = (time - nowDate).in(.minute)
+            let intervalInSecond = (time - nowDate).in(.second)
+            
+            if intervalInMonth != 0 {
+                displayTime = String(describing: intervalInMonth!) + " month"
+            }else if intervalInDay != 0{
+                displayTime = String(describing: intervalInDay!) + " day"
+            }else if intervalInHour != 0{
+                displayTime = String(describing: intervalInHour!) + " hour"
+            }else if intervalInMinute != 0{
+                displayTime = String(describing: intervalInMinute!) + " minute"
+            }else if intervalInSecond != 0{
+                displayTime = String(describing: intervalInSecond!) + " second"
+            }
+            if !displayTime.hasPrefix("1"){
+                displayTime += "s"
+            }
+            displayTime += " ago"
+        }
+        
+        updatedTime.text = displayTime
         
     }
 }

@@ -28,12 +28,12 @@ class PersonalTableViewController: UITableViewController {
     // MARK: - VC lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        Cache.profileCache.setKeysuffix(profileUserName)
+        loadCache()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.navigationController?.navigationBar.backgroundColor = UIColor.flatBlack
-//        Cache.profileCache.set(Cache.profileCacheKey, "")
-        loadCache()
     }
     
     override func didReceiveMemoryWarning() {
@@ -97,7 +97,7 @@ class PersonalTableViewController: UITableViewController {
         var organazationName = "Not Set"
         let organazationType = infoItem.Display
         let organazationImageType = "organazation"
-        if (json["company"].bool == true){
+        if (json["company"].stringValue != ""){
             organazationName = json["company"].stringValue
         }
         let orgInfo = personalItem.Info(InfoModule(organazationName,"",organazationType,organazationImageType))
@@ -107,7 +107,7 @@ class PersonalTableViewController: UITableViewController {
         var locationName = "Not Set"
         let locationType = infoItem.Display
         let locationImageType = "location"
-        if json["location"].bool == true{
+        if json["location"].stringValue != ""{
             locationName = json["location"].stringValue
         }
         let locationInfo = personalItem.Info(InfoModule(locationName,"",locationType,locationImageType))
@@ -117,7 +117,7 @@ class PersonalTableViewController: UITableViewController {
         var mailBoxName = "Not Set"
         let mailBoxType = infoItem.Display
         let mailBoxImageType = "mailBox"
-        if json["email"].bool == true{
+        if json["email"].stringValue != ""{
             mailBoxName = json["email"].stringValue
         }
         let mailBoxInfo = personalItem.Info(InfoModule(mailBoxName,"",mailBoxType,mailBoxImageType))
@@ -217,7 +217,6 @@ class PersonalTableViewController: UITableViewController {
         }
         if segue.identifier == "starRepos"{
             if let repoVC = destinationViewController as? ReposTableViewController{
-                print("here")
                 repoVC.repoOwner = profileUserName
                 repoVC.reposType = "starred"
                 repoVC.navigationItem.title = "Starred Repos"
@@ -233,6 +232,5 @@ class PersonalTableViewController: UITableViewController {
                 }
             }
         }
-        
     }
 }

@@ -7,11 +7,12 @@
 //
 
 import Foundation
+import SwiftDate
 
 class SubscribeModel{
     var userName: String
     var action: String
-    var created: Date
+    var created: DateInRegion
     var repoName: String
     var repoUrl: String
     var imageUrl: URL
@@ -22,7 +23,7 @@ class SubscribeModel{
     
     init(_ userName:String,
          _ action: String,
-         _ created: Date,
+         _ created: DateInRegion,
          _ repoName: String,
          _ repoUrl: String,
          _ imageUrl:URL,
