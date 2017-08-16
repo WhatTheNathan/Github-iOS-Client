@@ -19,14 +19,16 @@ class TitleTableViewCell: UITableViewCell {
     
     private func updateUI(){
         profileImage.contentMode = UIViewContentMode.scaleAspectFit
+        
         let profileImageKey = "ProfileImage" + (title?.userID)!
-        if let imageData = Cache.imageCache.data(forKey: profileImageKey){
+        Cache.keySet.insert(profileImageKey)
+        if let imageData = Cache.tempImageCache.data(forKey: profileImageKey){
             profileImage.image = UIImage(data: imageData)
         }else{
             if let imageUrl = URL(string: (title?.imageUrl)!){
                 DispatchQueue.global(qos: .userInitiated).async { [weak self] in //reference to image，self may be nil
                     let urlContents = try? Data(contentsOf: imageUrl)
-                    Cache.set(profileImageKey, urlContents)
+                    Cache.tempImageSet(profileImageKey, urlContents)
                     if let imageData = urlContents{
                         DispatchQueue.main.async {
                             self?.profileImage.image = UIImage(data: imageData)

@@ -17,11 +17,24 @@ class Cache{
 //        return provider
 //    }
     
-    //Mark: - image
+    //Mark: - commonimage
     static let imageCache = UserDefaults.standard
     
     static func set(_ key : String, _ value : Any?){
         Cache.imageCache.set(value, forKey: key)
+    }
+    
+    //Mark: - updateImage
+    static let tempImageCache = UserDefaults.standard
+    static var keySet = Set<String>()
+    
+    static func tempImageSet(_ key : String, _ value : Any?){
+        Cache.tempImageCache.set(value, forKey: key)
+    }
+    static func clearTempImage(){
+        for key in keySet{
+            Cache.tempImageCache.removeObject(forKey: key)
+        }
     }
     
     //Mark: - subscribe

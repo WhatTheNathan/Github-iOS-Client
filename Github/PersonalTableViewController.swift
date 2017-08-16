@@ -30,6 +30,8 @@ class PersonalTableViewController: UITableViewController {
         super.viewDidLoad()
         Cache.profileCache.setKeysuffix(profileUserName)
         loadCache()
+        let seconds = 60 - Date().timeIntervalSince1970.truncatingRemainder(dividingBy: 60)
+        perform(#selector(self.timeChanged), with: nil, afterDelay: seconds)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -40,6 +42,13 @@ class PersonalTableViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func timeChanged() {
+        refreshCache()
+        // 到下一分钟的剩余秒数，这里虽然接近 60，但是不写死，防止误差累积
+        let seconds = 60 - Date().timeIntervalSince1970.truncatingRemainder(dividingBy: 60)
+        perform(#selector(self.timeChanged), with: nil, afterDelay: seconds)
     }
     
     private func loadCache(){
@@ -131,6 +140,7 @@ class PersonalTableViewController: UITableViewController {
 
     private func refreshCache() {
         showProgressDialog()
+        Cache.clearTempImage()
         Cache.profileCache.profileRequest(profileUserName) {
             self.loadCache()
         }

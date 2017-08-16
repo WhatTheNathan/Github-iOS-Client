@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Github/PersonalTableViewController.swift"
-            timestampString = "524589520.303811"
+            timestampString = "524595341.603004"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Github/Cache.swift"
-            timestampString = "524402301.054836"
+            timestampString = "524595341.603004"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
             landmarkName = "subscribeCache"
             landmarkType = "24">
          </BreakpointContent>
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Github/PersonalTableViewController.swift"
-            timestampString = "524589520.303811"
+            timestampString = "524595341.603004"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "178"
-            endingLineNumber = "178"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
             landmarkName = "PersonalTableViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -225,6 +225,132 @@
             endingLineNumber = "49"
             landmarkName = "updateUI()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Github/Cache.swift"
+            timestampString = "524595137.021647"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "Cache"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "globalinit_33_605C281B57FA800CF7A2DE063213944E_func2"
+                  moduleName = "Github"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Rmbp_Nathan/Documents/Github/Github-iOS-Client/Github/Cache.swift"
+                  timestampString = "524595137.774163"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static Github.Cache.(subscribeCache : Github.AppCache).(variable initialization expression).(closure #1)"
+                  moduleName = "Github"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Rmbp_Nathan/Documents/Github/Github-iOS-Client/Github/Cache.swift"
+                  timestampString = "524595137.776725"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Github.Cache.subscribeCache.unsafeMutableAddressor : Github.AppCache"
+                  moduleName = "Github"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Rmbp_Nathan/Documents/Github/Github-iOS-Client/Github/Cache.swift"
+                  timestampString = "524595137.779249"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static Github.Cache.subscribeCache.getter : Github.AppCache"
+                  moduleName = "Github"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Rmbp_Nathan/Documents/Github/Github-iOS-Client/Github/Cache.swift"
+                  timestampString = "524595137.781313"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Github/PersonalTableViewController.swift"
+            timestampString = "524595324.91626"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
+            landmarkName = "refreshCache()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Github.PersonalTableViewController.(refreshCache in _91DC1A07999A82040C950AB3740E8729) () -&gt; ()"
+                  moduleName = "Github"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Rmbp_Nathan/Documents/Github/Github-iOS-Client/Github/PersonalTableViewController.swift"
+                  timestampString = "524595325.156508"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "143"
+                  endingLineNumber = "143"
+                  offsetFromSymbolStart = "50">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Github.PersonalTableViewController.((refreshCache in _91DC1A07999A82040C950AB3740E8729) () -&gt; ()).(closure #1)"
+                  moduleName = "Github"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Rmbp_Nathan/Documents/Github/Github-iOS-Client/Github/PersonalTableViewController.swift"
+                  timestampString = "524595325.157931"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "144"
+                  endingLineNumber = "144"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

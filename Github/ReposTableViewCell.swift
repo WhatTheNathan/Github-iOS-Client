@@ -35,7 +35,7 @@ class ReposTableViewCell: UITableViewCell {
         atributesText.addAttributes(colorAttribute, range: range)
         repoName.attributedText = atributesText
         
-        repoDescription.contentMode = .scaleAspectFit
+//        repoDescription.contentMode = .scaleAspectFit
         
         repoDescription.text = repo?.description
         language.text = repo?.language

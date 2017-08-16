@@ -18,6 +18,8 @@ class ReposTableViewController: UITableViewController {
 //        tableView.estimatedRowHeight = 50
 //        tableView.rowHeight = UITableViewAutomaticDimension
         Cache.reposCache.setKeysuffix(repoOwner + reposType)
+        let seconds = 60 - Date().timeIntervalSince1970.truncatingRemainder(dividingBy: 60)
+        perform(#selector(self.timeChanged), with: nil, afterDelay: seconds)
         loadCache()
     }
     
@@ -25,6 +27,13 @@ class ReposTableViewController: UITableViewController {
         super.viewWillAppear(true)
         self.navigationController?.navigationBar.barTintColor = UIColor.flatWhite
         self.navigationController?.navigationBar.isTranslucent = true
+    }
+    
+    func timeChanged() {
+        refreshCache()
+        // 到下一分钟的剩余秒数，这里虽然接近 60，但是不写死，防止误差累积
+        let seconds = 60 - Date().timeIntervalSince1970.truncatingRemainder(dividingBy: 60)
+        perform(#selector(self.timeChanged), with: nil, afterDelay: seconds)
     }
     
     var reposType : String = "repos"
@@ -38,13 +47,12 @@ class ReposTableViewController: UITableViewController {
             refreshCache()
             return
         }
-        
         var repoList : [ReposModel] = []
         reposLists.removeAll()
         
         let value = Cache.reposCache.value
         let json = JSON.parse(value)
-
+        
         for repo in json{
             let repoString = repo.1
             
@@ -83,12 +91,12 @@ class ReposTableViewController: UITableViewController {
             let range = fromIndex..<toIndex
             updatedDateString.replaceSubrange(range, with: " ")
             let updatedTime = DateInRegion(string: updatedDateString, format: .custom("yyyy-MM-dd HH:mm:ss"), fromRegion: Region.Local())
-//            let nowDate = DateInRegion(absoluteDate: Date(), in: Region.Local())
-//            print(nowDate)
-//            let what = DateTimeInterval(start: updatedTime!.absoluteDate, end: nowDate.absoluteDate)
-//            print(what)
-//            let diff_in_week = (updatedTime! - nowDate).in(.day)
-//            print(diff_in_week!)
+            //            let nowDate = DateInRegion(absoluteDate: Date(), in: Region.Local())
+            //            print(nowDate)
+            //            let what = DateTimeInterval(start: updatedTime!.absoluteDate, end: nowDate.absoluteDate)
+            //            print(what)
+            //            let diff_in_week = (updatedTime! - nowDate).in(.day)
+            //            print(diff_in_week!)
             
             
             let repo = ReposModel(repoName,
