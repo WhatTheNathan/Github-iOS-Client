@@ -62,7 +62,7 @@ class SubscribeTableViewController: UITableViewController{
             var action : String = ""
             if eventString["payload"]["action"].exists(){
                 action = "starred"
-            }else{
+            }else if eventString["payload"]["forkee"].exists(){
                 action = "forked"
             }
             let nsAction = action as NSString

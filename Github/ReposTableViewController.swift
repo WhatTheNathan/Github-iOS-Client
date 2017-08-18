@@ -15,8 +15,10 @@ class ReposTableViewController: UITableViewController {
     //Mark: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-//        tableView.estimatedRowHeight = 50
-//        tableView.rowHeight = UITableViewAutomaticDimension
+        
+        tableView.estimatedRowHeight = 50
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
         Cache.reposCache.setKeysuffix(repoOwner + reposType)
         let seconds = 60 - Date().timeIntervalSince1970.truncatingRemainder(dividingBy: 60)
         perform(#selector(self.timeChanged), with: nil, afterDelay: seconds)
@@ -72,7 +74,10 @@ class ReposTableViewController: UITableViewController {
             let repoID = repoString["id"].stringValue
             
             //parse repoDescription
-            let repoDescription = repoString["description"].stringValue
+            var repoDescription = repoString["description"].stringValue
+            if repoDescription == ""{
+                repoDescription = "No description, website, or topics provided"
+            }
             
             //parse language
             let language = repoString["language"].stringValue
@@ -141,9 +146,25 @@ class ReposTableViewController: UITableViewController {
         return cell
     }
     
-//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return UITableViewAutomaticDimension
-//    }
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        let lineBrakingMode =  NSLineBreakMode.byCharWrapping
+//        let paragragh:NSMutableParagraphStyle = NSMutableParagraphStyle()
+//        paragragh.lineBreakMode = lineBrakingMode
+//        let desText = reposLists[indexPath.section][indexPath.row].description as NSString
+//        let desTextAttribute : NSDictionary = [ NSFontAttributeName: UIFont.systemFont(ofSize: 17), NSParagraphStyleAttributeName: paragragh ]
+//        print(desText)
+//        let desTextSize = desText.size(attributes: desTextAttribute as! [String : Any])
+//        print(desTextSize.height)
+        
+//         let desTextAttribute : NSDictionary = [ NSFontAttributeName: UIFont.systemFont(ofSize: 17)]
+//        let desText = reposLists[indexPath.section][indexPath.row].description as NSString
+//        let option = NSStringDrawingOptions.usesFontLeading
+//        let size = CGSize(width: 306, height: 39)
+//        let desTextSize = desText.boundingRect(with: size, options: option, attributes: desTextAttribute as! [String : Any], context: nil)
+//        print(desTextSize.height)
+        
+        return UITableViewAutomaticDimension
+    }
     
     // MARK: - Navigation
 

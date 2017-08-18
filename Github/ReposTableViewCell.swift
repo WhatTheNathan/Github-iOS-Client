@@ -38,6 +38,7 @@ class ReposTableViewCell: UITableViewCell {
 //        repoDescription.contentMode = .scaleAspectFit
         
         repoDescription.text = repo?.description
+        
         language.text = repo?.language
         
         var displayTime = ""

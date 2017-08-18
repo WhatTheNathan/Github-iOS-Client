@@ -18,6 +18,7 @@ class SubscribeTableViewCell: UITableViewCell {
     var subscribeMovement : SubscribeModel?{ didSet{ updateUI() } }
     
     private func updateUI(){
+        //UserProfileImgaeView
         let imageKey = "eventImage"+(subscribeMovement?.eventID)!
         if let imageData = Cache.imageCache.data(forKey: imageKey){
             UserProfileImgaeView.image = UIImage(data: imageData)
@@ -36,13 +37,32 @@ class SubscribeTableViewCell: UITableViewCell {
                 UserProfileImgaeView?.image = nil
             }
         }
+        
+        //MovementLabel
+        let attach = NSTextAttachment.init()
+        if let actionString = subscribeMovement?.action{
+            switch actionString {
+            case "forked":
+                attach.image = #imageLiteral(resourceName: "fork.png")
+            case "starred":
+                attach.image = #imageLiteral(resourceName: "star.png")
+            default:
+                attach.image = nil
+            }
+        }
+        let attachString = NSAttributedString(attachment: attach)
+        let finalAttributeString = NSMutableAttributedString.init(attributedString: attachString)
+        
         let para = subscribeMovement?.description
         let amountText = NSMutableAttributedString.init(string: para!)
         let colorAttribute = [ NSForegroundColorAttributeName: UIColor.flatBlue ]
         amountText.addAttributes(colorAttribute, range: (subscribeMovement?.userNameRange)!)
         amountText.addAttributes(colorAttribute, range: (subscribeMovement?.repoNameRange)!)
-        MovementLabel.attributedText = amountText
         
+        finalAttributeString.append(amountText)
+        MovementLabel.attributedText = finalAttributeString
+        
+        //CreatedTimeLabel
         var displayTime = ""
         if let time = subscribeMovement?.created{
             let nowDate = DateInRegion(absoluteDate: Date(), in: Region.Local())
