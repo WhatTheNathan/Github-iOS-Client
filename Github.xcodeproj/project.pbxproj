@@ -49,6 +49,7 @@
 		53E6D9C81F433FD000681B1B /* mailbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 53E6D9C71F433FD000681B1B /* mailbox.png */; };
 		53E6D9CA1F433FD400681B1B /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = 53E6D9C91F433FD400681B1B /* location.png */; };
 		53E6D9CC1F433FD700681B1B /* organazation.png in Resources */ = {isa = PBXBuildFile; fileRef = 53E6D9CB1F433FD700681B1B /* organazation.png */; };
+		53E6D9CE1F48161F00681B1B /* ExtUIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E6D9CD1F48161F00681B1B /* ExtUIImage.swift */; };
 		B62FE55D66888A2CB7451156 /* Pods_Github.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7406373AB38974B301D80E0 /* Pods_Github.framework */; };
 /* End PBXBuildFile section */
 
@@ -97,6 +98,7 @@
 		53E6D9C71F433FD000681B1B /* mailbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mailbox.png; sourceTree = "<group>"; };
 		53E6D9C91F433FD400681B1B /* location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location.png; sourceTree = "<group>"; };
 		53E6D9CB1F433FD700681B1B /* organazation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = organazation.png; sourceTree = "<group>"; };
+		53E6D9CD1F48161F00681B1B /* ExtUIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtUIImage.swift; sourceTree = "<group>"; };
 		A7406373AB38974B301D80E0 /* Pods_Github.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Github.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC1ABA79051BE9CA3963D1E8 /* Pods-Github.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Github.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Github/Pods-Github.debug.xcconfig"; sourceTree = "<group>"; };
 		E092BDCDE4435BF026C7CD7C /* Pods-Github.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Github.release.xcconfig"; path = "Pods/Target Support Files/Pods-Github/Pods-Github.release.xcconfig"; sourceTree = "<group>"; };
@@ -355,6 +357,7 @@
 				53E6D98A1F4086B600681B1B /* AppCache.swift */,
 				53E6D9921F418B0500681B1B /* ApiConfig.swift */,
 				53E6D9941F41C3EF00681B1B /* ExtString.swift */,
+				53E6D9CD1F48161F00681B1B /* ExtUIImage.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -564,6 +567,7 @@
 				53BAEDA61F34C8650059175B /* UserModel.swift in Sources */,
 				53E6D9831F3E2CF900681B1B /* TitleModule.swift in Sources */,
 				53E6D97B1F3E0E5500681B1B /* LauchScreenViewController.swift in Sources */,
+				53E6D9CE1F48161F00681B1B /* ExtUIImage.swift in Sources */,
 				53E6D9851F3E2D4800681B1B /* InfoModule.swift in Sources */,
 				53E6D9731F3B301500681B1B /* Cache.swift in Sources */,
 				53BAED891F338AB00059175B /* AppDelegate.swift in Sources */,

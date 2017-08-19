@@ -96,13 +96,6 @@ class ReposTableViewController: UITableViewController {
             let range = fromIndex..<toIndex
             updatedDateString.replaceSubrange(range, with: " ")
             let updatedTime = DateInRegion(string: updatedDateString, format: .custom("yyyy-MM-dd HH:mm:ss"), fromRegion: Region.Local())
-            //            let nowDate = DateInRegion(absoluteDate: Date(), in: Region.Local())
-            //            print(nowDate)
-            //            let what = DateTimeInterval(start: updatedTime!.absoluteDate, end: nowDate.absoluteDate)
-            //            print(what)
-            //            let diff_in_week = (updatedTime! - nowDate).in(.day)
-            //            print(diff_in_week!)
-            
             
             let repo = ReposModel(repoName,
                                   repoFullName,
@@ -147,19 +140,6 @@ class ReposTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        let label = UILabel()
-//        label.font = UIFont(name: "sha", size: 17)
-//        label.numberOfLines = 0
-//        label.sizeThatFits(CGSize(width: 306, height: 39))
-//        label.text = reposLists[indexPath.section][indexPath.row].description
-//        label.lineBreakMode = .byTruncatingTail
-//        label.sizeToFit()
-//        print(label.frame.height)
-        
-//        let lineBrakingMode =  NSLineBreakMode.byTruncatingTail
-//        let paragragh:NSMutableParagraphStyle = NSMutableParagraphStyle()
-//        paragragh.lineBreakMode = lineBrakingMode
-        
         let label = UILabel()
         label.numberOfLines = 0
         let text = reposLists[indexPath.section][indexPath.row].description
@@ -168,17 +148,9 @@ class ReposTableViewController: UITableViewController {
         let option : NSStringDrawingOptions = .usesLineFragmentOrigin
         let size = CGSize(width: 340, height: 0)
         let desTextSize = nsText.boundingRect(with: size, options: option, attributes: desTextAttribute as? [String : Any], context: nil)
-        print(text)
-        print(desTextSize.size.height)
+//        print(text)
+//        print(desTextSize.size.height)
         return desTextSize.size.height + 67
-        
-//        label.text = text
-//        label.frame = CGRect(x: 5, y: 5, width: desTextSize.size.width, height: desTextSize.size.height)
-//        print(label.text!)
-////        print(label.textRect(forBounds: desTextSize, limitedToNumberOfLines: 0))
-//        print(label.frame.height)
-        
-//        return UITableViewAutomaticDimension
     }
     
     // MARK: - Navigation

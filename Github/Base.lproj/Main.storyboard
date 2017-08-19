@@ -252,15 +252,15 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="278"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dxZ-kJ-pIs" id="hh3-gY-q59">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="277.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="278"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VAy-MJ-pSz">
-                                            <rect key="frame" x="134" y="55" width="100" height="100"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Woi-ij-9DG">
+                                            <rect key="frame" x="-51" y="0.0" width="506" height="219"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IOl-fo-Yv0">
-                                            <rect key="frame" x="29" y="214" width="78" height="65"/>
+                                            <rect key="frame" x="27" y="218" width="78" height="51"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                             <state key="normal" title="Button">
@@ -271,7 +271,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yBX-gw-3o9">
-                                            <rect key="frame" x="148" y="214" width="78" height="65"/>
+                                            <rect key="frame" x="148" y="218" width="78" height="51"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                             <state key="normal" title="Button">
@@ -282,7 +282,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U22-wl-Pcg">
-                                            <rect key="frame" x="275" y="214" width="78" height="65"/>
+                                            <rect key="frame" x="275" y="218" width="78" height="51"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                             <state key="normal" title="Button">
@@ -293,16 +293,21 @@
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="user name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tEw-cX-uhr">
-                                            <rect key="frame" x="127" y="167" width="120" height="39"/>
+                                            <rect key="frame" x="127" y="160" width="120" height="39"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VAy-MJ-pSz">
+                                            <rect key="frame" x="137" y="59" width="100" height="100"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="FollowingButton" destination="U22-wl-Pcg" id="lJR-5g-Lxe"/>
+                                    <outlet property="changeImage" destination="Woi-ij-9DG" id="WUl-T1-GDA"/>
                                     <outlet property="followersButton" destination="IOl-fo-Yv0" id="OF7-Pp-RK2"/>
                                     <outlet property="profileImage" destination="VAy-MJ-pSz" id="o8J-Uk-gvO"/>
                                     <outlet property="reposButton" destination="yBX-gw-3o9" id="YfT-N1-Z3Y"/>
@@ -547,9 +552,9 @@
         <image name="star.png" width="18" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="LUF-xY-ajy"/>
-        <segue reference="rIV-6A-Grq"/>
+        <segue reference="zLu-QJ-m6k"/>
         <segue reference="p9K-VX-yaW"/>
-        <segue reference="dQe-sE-PL4"/>
+        <segue reference="Wk0-4U-2ic"/>
+        <segue reference="rIV-6A-Grq"/>
     </inferredMetricsTieBreakers>
 </document>

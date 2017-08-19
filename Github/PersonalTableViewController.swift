@@ -28,7 +28,9 @@ class PersonalTableViewController: UITableViewController {
     // MARK: - VC lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+//        Cache.clearTempImage()
         Cache.profileCache.setKeysuffix(profileUserName)
+//        Cache.profileCache.set(Cache.profileCache.key, "")
         loadCache()
         let seconds = 60 - Date().timeIntervalSince1970.truncatingRemainder(dividingBy: 60)
         perform(#selector(self.timeChanged), with: nil, afterDelay: seconds)
