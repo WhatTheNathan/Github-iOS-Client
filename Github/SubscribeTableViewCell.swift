@@ -46,6 +46,8 @@ class SubscribeTableViewCell: UITableViewCell {
                 attach.image = #imageLiteral(resourceName: "fork.png")
             case "starred":
                 attach.image = #imageLiteral(resourceName: "star.png")
+            case "created repository":
+                attach.image = #imageLiteral(resourceName: "createdRepo.png")
             default:
                 attach.image = nil
             }

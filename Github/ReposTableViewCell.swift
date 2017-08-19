@@ -36,7 +36,7 @@ class ReposTableViewCell: UITableViewCell {
         repoName.attributedText = atributesText
         
 //        repoDescription.contentMode = .scaleAspectFit
-        
+//        repoDescription.sizeToFit()
         repoDescription.text = repo?.description
         
         language.text = repo?.language

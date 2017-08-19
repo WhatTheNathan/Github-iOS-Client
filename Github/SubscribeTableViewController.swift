@@ -64,6 +64,8 @@ class SubscribeTableViewController: UITableViewController{
                 action = "starred"
             }else if eventString["payload"]["forkee"].exists(){
                 action = "forked"
+            }else{
+                action = "created repository"
             }
             let nsAction = action as NSString
                         
