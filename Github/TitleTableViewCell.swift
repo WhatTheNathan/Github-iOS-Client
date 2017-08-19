@@ -20,7 +20,6 @@ class TitleTableViewCell: UITableViewCell {
     
     private func updateUI(){
         profileImage.contentMode = UIViewContentMode.scaleAspectFit
-        
         profileImage.layer.masksToBounds = true
         profileImage.layer.borderWidth = 2
         profileImage.layer.borderColor = UIColor.white.cgColor
@@ -63,7 +62,9 @@ class TitleTableViewCell: UITableViewCell {
         reposButton.titleLabel?.textAlignment = .center
         FollowingButton.titleLabel?.textAlignment = .center
         
-        
+//        followersButton.titleLabel?.text = "Followers\n" + (title?.followers)!
+//        reposButton.titleLabel?.text = "Repos\n" + (title?.repos)!
+//        followersButton.titleLabel?.text = "Followers\n" + (title?.followers)!
         followersButton.setTitle("Followers\n" + (title?.followers)!, for: UIControlState(rawValue: 0))
         reposButton.setTitle("Repos\n" + (title?.repos)!, for: UIControlState(rawValue: 0))
         FollowingButton.setTitle("Followings\n" + (title?.followings)!, for: UIControlState(rawValue: 0))

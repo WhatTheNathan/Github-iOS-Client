@@ -22,19 +22,19 @@ extension UIImage {
     }
     
     func getGaussianBlur() -> UIImage {
-        let resize = CGSize(width: 400, height: 234)
+        let resize = CGSize(width: 500, height: 293)
         let resizeImage = self.reSizeImage(reSize: resize)
         let beginImage = CIImage(image: resizeImage)
         let gaussianBlur = CIFilter(name: "CIGaussianBlur")
         gaussianBlur?.setDefaults()
         gaussianBlur?.setValue(beginImage, forKey: kCIInputImageKey)
-        gaussianBlur?.setValue(5.0, forKey: kCIInputRadiusKey)
+        gaussianBlur?.setValue(3.5, forKey: kCIInputRadiusKey)
         let context = CIContext(options:[kCIContextUseSoftwareRenderer: true])
 
         let cgImage = context.createCGImage((gaussianBlur?.outputImage)!, from: (gaussianBlur?.outputImage?.extent)!)
         let finalImage = UIImage(cgImage: cgImage!)
-        print(finalImage.size.width)
-        print(finalImage.size.height)
+//        print(finalImage.size.width)
+//        print(finalImage.size.height)
         return finalImage
     }
 }
