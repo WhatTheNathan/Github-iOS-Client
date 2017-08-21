@@ -29,6 +29,7 @@ class TitleTableViewCell: UITableViewCell {
         let profileFilterImageKey = "ProfileFilterImage" + (title?.userID)!
         Cache.keySet.insert(profileImageKey)
         Cache.keySet.insert(profileFilterImageKey)
+        
         if let imageData = Cache.tempImageCache.data(forKey: profileImageKey) , let filterData = Cache.tempImageCache.data(forKey: profileFilterImageKey){
             profileImage.image = UIImage(data: imageData)
             let filterImage = UIImage(data: filterData)
@@ -38,9 +39,11 @@ class TitleTableViewCell: UITableViewCell {
                 DispatchQueue.global(qos: .userInitiated).async { [weak self] in //reference to image，self may be nil
                     let urlContents = try? Data(contentsOf: imageUrl)
                     let image = UIImage(data: urlContents!)
+                    
                     let filterImage = image?.getGaussianBlur()
-//                    let filterImage = image?.reSizeImage(reSize: CGSize(width: 429, height: 219))
+                    
                     Cache.tempImageSet(profileImageKey, urlContents)
+                    
                     let filterData = UIImagePNGRepresentation(filterImage!)
                     Cache.tempImageSet(profileFilterImageKey,filterData)
                     if let imageData = urlContents{
@@ -62,9 +65,6 @@ class TitleTableViewCell: UITableViewCell {
         reposButton.titleLabel?.textAlignment = .center
         FollowingButton.titleLabel?.textAlignment = .center
         
-//        followersButton.titleLabel?.text = "Followers\n" + (title?.followers)!
-//        reposButton.titleLabel?.text = "Repos\n" + (title?.repos)!
-//        followersButton.titleLabel?.text = "Followers\n" + (title?.followers)!
         followersButton.setTitle("Followers\n" + (title?.followers)!, for: UIControlState(rawValue: 0))
         reposButton.setTitle("Repos\n" + (title?.repos)!, for: UIControlState(rawValue: 0))
         FollowingButton.setTitle("Followings\n" + (title?.followings)!, for: UIControlState(rawValue: 0))

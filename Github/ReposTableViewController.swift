@@ -140,8 +140,6 @@ class ReposTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let label = UILabel()
-        label.numberOfLines = 0
         let text = reposLists[indexPath.section][indexPath.row].description
         let desTextAttribute : NSDictionary = [ NSFontAttributeName: UIFont.systemFont(ofSize: 17)]
         let nsText = text as NSString

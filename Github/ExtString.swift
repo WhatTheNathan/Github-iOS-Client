@@ -15,6 +15,12 @@ extension String{
         return self[startIndex..<endIndex]
     }
     
+    func substring(_ range: NSRange) -> String {
+        let startIndex = index(self.startIndex, offsetBy: range.location)
+        let endIndex = index(self.startIndex, offsetBy: range.length)
+        return self[startIndex..<endIndex]
+    }
+    
     var urlEscaped: String {
         return self.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
     }

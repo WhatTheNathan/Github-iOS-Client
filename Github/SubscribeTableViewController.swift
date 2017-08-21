@@ -11,7 +11,15 @@ import Alamofire
 import SwiftyJSON
 import SwiftDate
 
-class SubscribeTableViewController: UITableViewController{
+class SubscribeTableViewController: UITableViewController,SubscribeTableViewControllerDelegate{
+    
+    // Mark: - protocol
+    func cellUserNameDidTap(sender cell: UITableViewCell) {
+        performSegue(withIdentifier: "userProfile", sender: cell)
+    }
+    func cellRepoDidTap(sender cell: UITableViewCell) {
+        performSegue(withIdentifier: "repoUrl", sender: cell)
+    }
 
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -133,6 +141,7 @@ class SubscribeTableViewController: UITableViewController{
         let event: SubscribeModel = subscribeMovements[indexPath.section][indexPath.row]
         if let subscribeCell = cell as? SubscribeTableViewCell{
             subscribeCell.subscribeMovement = event
+            subscribeCell.vcDelegate = self
         }
         return cell
     }
@@ -150,6 +159,18 @@ class SubscribeTableViewController: UITableViewController{
                 }
             }
         }
+        if segue.identifier == "userProfile"{
+            if let personalVC = destinationViewController as? PersonalTableViewController{
+                if let cell = sender as? SubscribeTableViewCell{
+                    personalVC.profileUserName = (cell.subscribeMovement?.userName)!
+                    personalVC.navigationItem.title = (cell.subscribeMovement?.userName)!
+                }
+            }
+        }
     }
-    
+}
+
+protocol SubscribeTableViewControllerDelegate {
+    func cellUserNameDidTap(sender cell: UITableViewCell)
+    func cellRepoDidTap(sender cell: UITableViewCell)
 }

@@ -123,7 +123,7 @@
                                     <outlet property="CreatedTimeLabel" destination="ZsC-3J-8hJ" id="eLG-ZR-7iq"/>
                                     <outlet property="MovementLabel" destination="fYY-Sa-BZz" id="78M-dz-lq1"/>
                                     <outlet property="UserProfileImgaeView" destination="CiK-yY-tH3" id="vdG-f3-X3F"/>
-                                    <segue destination="Tio-lf-Cfb" kind="show" identifier="repoUrl" id="Tbt-xn-KSp"/>
+                                    <segue destination="j9g-uo-qbN" kind="show" identifier="userProfile" id="Dsg-oF-VSI"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -139,6 +139,9 @@
                             <action selector="refreshCache" destination="Hio-85-Hy4" eventType="valueChanged" id="pLL-6Q-91l"/>
                         </connections>
                     </refreshControl>
+                    <connections>
+                        <segue destination="Tio-lf-Cfb" kind="show" identifier="repoUrl" id="9EQ-Ad-0yY"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sr1-nY-Eyl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -577,8 +580,8 @@
         <image name="star.png" width="18" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zLu-QJ-m6k"/>
-        <segue reference="p9K-VX-yaW"/>
+        <segue reference="9EQ-Ad-0yY"/>
+        <segue reference="Dsg-oF-VSI"/>
         <segue reference="Wk0-4U-2ic"/>
         <segue reference="rIV-6A-Grq"/>
     </inferredMetricsTieBreakers>
