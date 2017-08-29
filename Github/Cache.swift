@@ -17,7 +17,7 @@ class Cache{
 //        return provider
 //    }
     
-    //Mark: - commonimage
+    //Mark: - commonImage
     static let imageCache = UserDefaults.standard
     
     static func set(_ key : String, _ value : Any?){

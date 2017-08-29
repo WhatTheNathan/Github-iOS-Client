@@ -23,6 +23,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
+//        Cache.currentUserCache.value = ""
         if(!Cache.currentUserCache.isEmpty){
             performSegue(withIdentifier: "login", sender: LoginViewController.self)
         }

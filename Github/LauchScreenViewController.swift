@@ -13,7 +13,9 @@ class LauchScreenViewController: UIViewController {
         super.viewDidLoad()
     }
 
+    
     override func viewWillDisappear(_ animated: Bool) {
+        print("dsadas")
         super.viewWillDisappear(true)
         if(Cache.currentUserKey.isEmpty){
             let sb = UIStoryboard(name: "main", bundle: nil)
